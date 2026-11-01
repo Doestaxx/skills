@@ -1,13 +1,14 @@
 # Calibrating a single-image world
 
-A single-image world model on Scenario returns a Gaussian splat file (`.spz`) and nothing else: no
-metric scale, no floor, no collider. Everything below is derived from the splats, with the world's
+A single-image world model (an external service or a ComfyUI node) returns a Gaussian splat file
+(`.spz` or `.ply`) and nothing else: no metric scale, no floor, no collider. Everything below is derived from the splats, with the world's
 origin at the photo camera. Write it as a local script (numpy is enough) and run it one world at a
 time.
 
 ## Read the splats
 
-SPZ is gzip. After the 16-byte header (magic `NGSP`, version, point count, spherical-harmonics
+A `.ply` splat stores the same fields uncompressed, per vertex; read positions and opacity from it
+directly. SPZ is gzip. After the 16-byte header (magic `NGSP`, version, point count, spherical-harmonics
 degree, fractional bits) come all positions (3 × 24-bit fixed point), then opacities, colors, scales
 (`exp(byte / 16 - 10)`), and rotations. Positions are enough for calibration; keep opacity to drop
 faint splats. The worlds at authoring time used OpenCV axes (x right, y down, z forward); a 180°
@@ -68,3 +69,17 @@ box is where it stood:
 Write the result per room as data the viewer reads: the world transform (rotation, translation,
 scale), the fitted field of view, the heightfield grid, and each object's position, rotation, scale,
 and material class.
+
+## Mesh room (3D Jutsu route)
+
+A room built in hosted 3D Jutsu is already metric, level, and floored at y = 0, so skip the floor,
+scale, and lens fits:
+
+- Read the delivery camera's position and field of view with `scene_builder_3d_query_python`
+  (`bpy.data.objects["CAM_main"]`), and match its height to about 1.0 m when the photo was taken at
+  chest height.
+- Collision: use the exported GLB's floor and wall meshes directly (trimesh colliders), or rasterize
+  them into the same 4 cm heightfield so the walker code is shared.
+- Placing objects: render a depth pass from the delivery camera (`scene_builder_3d_run_python`,
+  published through `artifacts`), then run the same footprint steps as above on it. Blender's GLB
+  export is y-up, matching three.js.

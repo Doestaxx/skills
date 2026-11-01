@@ -93,11 +93,11 @@ function render(source, read, skills) {
   });
 
   const manifest = {
-    name: "scenario-skills",
-    owner: { name: "Scenario", url: "https://scenario.com" },
+    name: "doestaxx-skills",
+    owner: { name: "Doestaxx", url: "https://github.com/Doestaxx/skills" },
     metadata: {
       description:
-        "Agent Skills for creating production-ready images, video, audio, 3D, and custom models with Scenario, plus expert tools for DCC software and game engines",
+        "Agent Skills for creating production-ready images, video, audio, and 3D on the Higgsfield MCP, with ComfyUI node graphs and expert tools for DCC software and game engines",
     },
     plugins,
   };

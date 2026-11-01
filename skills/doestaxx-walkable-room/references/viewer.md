@@ -20,6 +20,13 @@ level of detail; the physics rules hold for any engine.
 - Render on demand: request frames from Spark's `onDirty` callback while pages stream, and stop when
   nothing moves.
 
+## Mesh room
+
+On the 3D Jutsu route, load the room GLB with three.js `GLTFLoader` instead of a `SplatMesh`, with
+the same Meshopt and WebP simplification as the props. Area lights do not export to GLB: light the
+room with the prop rig below plus a baked or environment light. Everything from Walking on applies
+unchanged, with the mesh floor and walls as the ground collider when no heightfield was derived.
+
 ## Walking
 
 The visitor is a small circle (about 24 cm) at the calibrated eye height that slides along the

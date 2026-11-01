@@ -14,7 +14,7 @@ import { fileURLToPath } from "node:url";
 
 const scripts = dirname(fileURLToPath(import.meta.url));
 const COMMAND =
-  "npx skills add scenario-labs/skills --skill scenario scenario-demo";
+  "npx skills add Doestaxx/skills --skill scenario scenario-demo";
 
 const README = `## Skills
 

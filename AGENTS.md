@@ -5,16 +5,27 @@ rules live in [docs/decisions.md](docs/decisions.md).
 
 ## What this repo is
 
-Public Agent Skills for [Scenario](https://scenario.com): procedural knowledge that teaches AI
-coding agents to create production-ready content through the
-[Scenario MCP server](https://mcp.scenario.com). The content spans images, video, audio, textures,
-skyboxes, 3D, and custom models, for games, entertainment, and any creative vertical.
+Doestaxx Agent Skills, forked from Scenario's open skill library (MIT): procedural knowledge that
+teaches AI coding agents to create production-ready content through the Higgsfield MCP server,
+with node-graph pipelines on ComfyUI. The content spans images, video, audio, textures, skyboxes,
+and 3D, for games, entertainment, and any creative vertical.
 
 - Format: [Agent Skills](https://agentskills.io).
-- Install: `npx skills add scenario-labs/skills`.
-- Listing: [skills.sh](https://www.skills.sh/scenario-labs/skills).
+- Install: `npx skills add Doestaxx/skills`.
 - The one exception to the MCP focus: the expert tools, teams of skills that drive DCC software and
   game engines installed on the user's machine (see Expert tools).
+
+### Migration in progress
+
+- Converted skills are named `doestaxx` and `doestaxx-<topic>` and run on Higgsfield. The core loop
+  lives in `skills/doestaxx/SKILL.md`; every converted skill follows it.
+- Skills still named `scenario-*` are unconverted and still target the Scenario MCP. Convert one
+  before relying on it.
+- Where the rules below name Scenario tools (`model_run`, `recommend`, `dry_run`), read them as the
+  Higgsfield equivalents in the core skill (`generate_*`, `models_explore`, `get_cost`).
+- Where Higgsfield lacks a capability, a skill lists the alternatives for the user to choose from
+  (ComfyUI through `doestaxx-workflows`, local tools, named services) instead of substituting
+  silently.
 
 ## Quick start
 
