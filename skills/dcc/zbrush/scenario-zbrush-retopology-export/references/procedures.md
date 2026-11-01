@@ -344,7 +344,7 @@ print(rx.uv_verdict(u, udim=False))
   percent intensity; a closed protected ring forces a seam anyway). Control maps are bound to the
   Tool name (UV Master doc): Clear Control Maps only on a clone, it erases polypaint.
 - UDIMs: Flatten rescales into 0 to 1, so ZBrush cannot lay out multi-tile UVs (UV Master doc). Lay
-  out UDIMs in scenario-maya-retopology-uv or scenario-blender-uv-baking and bring the UVs back on
+  out UDIMs in scenario-maya-retopology-uv or doestaxx-blender-uv-baking and bring the UVs back on
   the level-1 mesh [verify the import route], or give each SubTool its own tile with Tool > UV Map
   AdjU and ApplyAdj [verify].
 - Relaxing UVs by polishing a flattened clone (Drust tl_FOvZOqHU) conflicts with the UV Master doc
@@ -394,17 +394,17 @@ a morph target is stored (section 5).
 | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
 | Maya + Arnold                 | MME Displacement, 32Bit + exr, 3 Channels off, Mid 0.5 (or 0), SubDiv level 1, Adaptive off, DpSubPix 0, SmoothUV on, Flip V on, UDIM names; OBJ level 1 Qud, Txr, Grp off, cm                            | File node Filter off, UV Tiling Mode UDIM (Mari); Arnold subdivision Catmull-Clark, about 3 iterations (ideally the ZBrush level count), Auto Bump on; Scalar Zero Value = Mid; Raw color space [added]      | FlippedNormals -ThBTEc8L_M 00:04:09 to 00:20:35 and its description correction |
 | Redshift (Maya, C4D, Houdini) | 32Bit + exr, Mid 0, Scale 1                                                                                                                                                                               | tessellation and displacement on per object; with Mid 0.5 remap so 0.5 is zero [added, verify node fields]                                                                                                   | MME doc                                                                        |
-| Unreal                        | no film displacement; low mesh triangulated as the engine will (Tri on export or in the DCC); decimated high for an external bake, or Substance Bridge Low & High                                         | normal DirectX (Y-): flip green for OpenGL maps [added]; bake 16-bit, reduce to 8-bit last; FBX from scenario-maya-expert or scenario-blender-expert, cm                                                     | Polycount (Triangulation, Workflow 16)                                         |
+| Unreal                        | no film displacement; low mesh triangulated as the engine will (Tri on export or in the DCC); decimated high for an external bake, or Substance Bridge Low & High                                         | normal DirectX (Y-): flip green for OpenGL maps [added]; bake 16-bit, reduce to 8-bit last; FBX from scenario-maya-expert or doestaxx-blender-expert, cm                                                     | Polycount (Triangulation, Workflow 16)                                         |
 | Unity                         | as Unreal                                                                                                                                                                                                 | normal OpenGL (Y+) [added]; FBX Unity preset exists in the plugin [uistr]; meters                                                                                                                            | FBX doc                                                                        |
 | Substance Painter             | Texture > Substance Bridge: Low & High, Auto-Bake, Smooth Normals, Texture Sets Per PolyGroup or Per Subtool, Force Auto-Unwrap off when UVs exist; ID map from MME Texture from Polypaint with Flip V on | every send is a new project; project normal format OpenGL by default [added]                                                                                                                                 | Substance Bridge doc, labels [uistr]; FlippedNormals p56N-dN11zY               |
-| Blender (Cycles)              | 32Bit + exr, Mid 0.5 (or 0), SmoothUV on                                                                                                                                                                  | Displacement node Midlevel = Mid, Scale 1 times the unit ratio [added, verify with live_rx_04]; Displacement and Bump plus Subdivision modifier [added]; Normal Map node OPENGL (scenario-blender-uv-baking) | [added]                                                                        |
+| Blender (Cycles)              | 32Bit + exr, Mid 0.5 (or 0), SmoothUV on                                                                                                                                                                  | Displacement node Midlevel = Mid, Scale 1 times the unit ratio [added, verify with live_rx_04]; Displacement and Bump plus Subdivision modifier [added]; Normal Map node OPENGL (doestaxx-blender-uv-baking) | [added]                                                                        |
 | 16-bit displacement, any      | Mid 0.5, Get Scale, take the lower value; 16Bit Scale on when maps merge                                                                                                                                  | shader Intensity from the file name                                                                                                                                                                          | MME doc                                                                        |
 | Vector displacement           | vd Tangent for anything animated, World for static; 32-bit EXR; Create Diagnostic Files and set FlipAndSwitch per renderer                                                                                | GoZ does not carry VDMs                                                                                                                                                                                      | MME doc (its FlipAndSwitch numbers are for 2012 apps)                          |
 
 Frequency split when the target supports both: displacement from level 1 (forms) plus a tangent
 normal map from a higher level (micro detail) (Drust 2zDAtaQqwh8; MME doc). Game normals in the
 engine's tangent basis come from an external baker: export the triangulated low and a decimated high
-with matching names (`_low`, `_high`) and hand them to scenario-blender-uv-baking
+with matching names (`_low`, `_high`) and hand them to doestaxx-blender-uv-baking
 (`bake_high_to_low`) or Painter [added: ZBrush bakes from its own levels in its own tangent space].
 
 ## 8. Map calibration fixture (live_rx_04)
@@ -449,7 +449,7 @@ print(rx.scale_report(files[0]["path"], 180.0, unit="cm"))   # one part; check t
   a dialog for one Python user on FBX import (forum), and Python export is [verify] (version deltas
   3.6, open checklist). On this Mac AppleScript System Events can click ZBrush dialogs (README "Side
   channels", Accessibility allowed), a possible route to confirm the window [verify]. Default agent
-  route [added]: export OBJ, then scenario-maya-expert or scenario-blender-expert writes the FBX
+  route [added]: export OBJ, then scenario-maya-expert or doestaxx-blender-expert writes the FBX
   with the right axis, unit and triangulation. Human route: in the plugin pick the FBX version (2009
   to 2020 listed [uistr]), bin, Tris per target, SNormals on, axis preset (MayaYUp if in doubt,
   Unity, 3ds Max, Toolbag...), Export Polygroups as Mats for texture sets (FlippedNormals
@@ -490,7 +490,7 @@ inside the Tool.
 
 ```python
 # agent side, before ZBrush
-conv = rx.glb_to_obj("/abs/in/creature.glb", "/abs/work/creature.obj")    # scenario-3d download
+conv = rx.glb_to_obj("/abs/in/creature.glb", "/abs/work/creature.obj")    # doestaxx-3d download
 tri = rx.triage_ai_mesh(conv["obj"], expected_parts=6)
 print("\n".join(tri["plan"]))
 ori = rx.orient_for_import(conv["obj"], tri, "/abs/work/creature_fixed.obj")
@@ -581,7 +581,7 @@ Details and choices:
   `zb_ops.deform("Inflate", v)`.
 - Symmetric designs: Mirror And Weld on the DynaMesh (`zb_ops` key `mirror_weld`), then ZRemesher
   with symmetry on.
-- Separation of fused parts without color: scenario-3d part segmentation upstream [added], else
+- Separation of fused parts without color: doestaxx-3d part segmentation upstream [added], else
   straight SliceCurve cuts (Ctrl+Shift, SliceCurve, a line: human) then Groups Split, then Close
   Holes per part.
 - Local rebuilds of a fused or damaged region: Sculptris Pro on a mesh without levels, instead of
@@ -633,7 +633,7 @@ m = rx.zcall("mme_create_all", "/abs/out/maps", "hero", settings="arnold", timeo
 rx.zcall("set_export_scale", 180.0, axis=1)                           # 8 cm for Maya, all SubTools
 rx.zcall("set_export_switches", quads=True, uvs=True, groups=False)
 maya = rx.zcall("export_subtools", "/abs/out/maya", level="lowest")   # body and eyes, level 1
-# game: a triangulated copy of level 1 plus a decimated high for scenario-blender-uv-baking
+# game: a triangulated copy of level 1 plus a decimated high for doestaxx-blender-uv-baking
 rx.zcall("set_export_switches", quads=False, uvs=True, groups=False)
 game = rx.zcall("export_subtools", "/abs/out/game", level="lowest", suffix="_low")
 rx.zcall("decimate_copy", target_points=2_000_000, keep_uvs=False, timeout=1800)

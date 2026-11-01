@@ -194,7 +194,7 @@ project's `notes/retopology-uv/`, `notes/maps-export/` and `notes/pipeline/` (di
 - scenario-zbrush-expert (lead): protocol, toolkit, dialog budget, 2026 traps.
 - scenario-maya-retopology-uv, scenario-maya-lookdev (Maya Expert Skills project): what the Maya
   side expects (cm, Y-up, eyes separate, no n-gons; displacement zero value and scale recorded).
-- scenario-blender-uv-baking (Blender Expert Skills project): `bake_high_to_low` for game normals in
+- doestaxx-blender-uv-baking (Blender Expert Skills project): `bake_high_to_low` for game normals in
   MikkTSpace; Normal Map node convention.
-- scenario-3d: GLB outputs of text-to-3D and image-to-3D; part segmentation and remesh utilities
+- doestaxx-3d: GLB outputs of text-to-3D and image-to-3D; part segmentation and remesh utilities
   upstream.

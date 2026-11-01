@@ -54,7 +54,7 @@ schemas and flag the gap.
   labeled smoothness, so confirm the convention before wiring it. `model_patina-material` tiles a
   PBR material straight from a prompt. For a mesh, 3D texturing and image-to-3D models emit the maps
   instead (Tripo 3.0 Texturing, Tencent Texture Edit, Meshy 7 Retexture); enable the PBR toggle
-  found via `model_schema_get`. Retexturing a full mesh is a 3D-to-3D pipeline: see `scenario-3d`,
+  found via `model_schema_get`. Retexturing a full mesh is a 3D-to-3D pipeline: see `doestaxx-3d`,
   and `scenario-meshy` for the Meshy retexture contract.
 
 ## Worked example: seamless brick, iterated then upscaled

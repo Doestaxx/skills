@@ -18,7 +18,7 @@ than the MCP server:
   - One suite per family, `tests/scenario-<app>-expert/` (the same file in each), imports every
     script with system Python and checks that each skill name a script uses to find the lead's
     `scripts/` exists. `pnpm skill-files` still parses every Python script.
-  - Blender's `tests/scenario-blender-expert/test_live_gate.py` runs the delivery gate in a real
+  - Blender's `tests/doestaxx-blender-expert/test_live_gate.py` runs the delivery gate in a real
     Blender against planted defects. `.github/workflows/blender.yml` runs it on Linux whenever a
     Blender script changes; the gate has no per-OS branch. Without Blender installed it skips.
   - Godot also runs the application, on every OS: its toolkit branches per OS (locks, the process
@@ -26,7 +26,7 @@ than the MCP server:
     Linux, macOS, and Windows in `.github/workflows/godot.yml` whenever a Godot script changes.
     Without Godot installed its live tests skip; its lock and GUI-check tests still run in
     `pnpm test`.
-  - Blender's live suites (`tests/scenario-blender-expert/test_live_*.py`) run Blender headless
+  - Blender's live suites (`tests/doestaxx-blender-expert/test_live_*.py`) run Blender headless
     against fixtures with known answers. `.github/workflows/blender.yml` installs the release the
     skills were verified on, on Linux, whenever a Blender script or test changes, and fails if a
     live suite skips. Without Blender they skip in `pnpm test`.

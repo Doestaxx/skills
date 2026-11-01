@@ -90,5 +90,5 @@ DevForum announcements for version facts: [Unified Lighting](https://devforum.ro
 ## Scenario skills named in the handoffs
 
 All in the public repository [scenario-labs/skills](https://github.com/scenario-labs/skills):
-scenario-3d, scenario-textures, scenario-skyboxes, scenario-game-assets, and the scenario-roblox-*
+doestaxx-3d, scenario-textures, doestaxx-skyboxes, scenario-game-assets, and the scenario-roblox-*
 team.

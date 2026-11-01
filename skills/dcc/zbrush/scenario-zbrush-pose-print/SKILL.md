@@ -65,7 +65,7 @@ determinism:
 
 | Route                                                             | When                                           | How                                                                                                                                                                        | Status                                                      |
 | ----------------------------------------------------------------- | ---------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
-| A. Numeric external rig (Munoz Gomez's Blender route, made exact) | humanoids, extreme or many poses               | TPoseMesh, `export_tpose`, `loose_pieces` weighted rigidly to one bone each, scenario-blender-rigging poses by angle and returns the same order, `import_pose`, TPose>SubT | deterministic; guards tested offline                        |
+| A. Numeric external rig (Munoz Gomez's Blender route, made exact) | humanoids, extreme or many poses               | TPoseMesh, `export_tpose`, `loose_pieces` weighted rigidly to one bone each, doestaxx-blender-rigging poses by angle and returns the same order, `import_pose`, TPose>SubT | deterministic; guards tested offline                        |
 | B. ZSphere rig by code                                            | in ZBrush, organic, or DynaMesh via Proxy Pose | joints from polygroup borders, `zs_build`, forward kinematics `zs_pose`                                                                                                    | FK tested; bound mesh following API edits [verify live_p02] |
 | C. Whole-SubTool rigid moves                                      | a base, a stand, a prop added after posing     | `rotate_subtool_matrix` (X, Y, Z) plus `translate_subtool`, the carrier's whole transform, corrected from exports                                                          | math tested; signs [verify live_p03, p08]                   |
 | D. Mask plus Gizmo or action line                                 | cleanup by a computer-use agent or a human     | Ctrl+click group, Alt pivot, drag                                                                                                                                          | weak for this agent                                         |
@@ -164,7 +164,7 @@ Seam smoothing and Move Topological have agent forms in `procedures.md` P6, stil
   scenario-zbrush-stylized or scenario-zbrush-hard-surface: a versioned ZTL with named SubTools,
   levels (or a DynaMesh for Proxy Pose), polygroups per part, the last review sheet; from
   scenario-zbrush-retopology-export, a projected stack when a sculpt had no levels.
-- **Sends** to scenario-blender-rigging or scenario-maya-expert: the TPose OBJ and a plan (joints,
+- **Sends** to doestaxx-blender-rigging or scenario-maya-expert: the TPose OBJ and a plan (joints,
   angles, rigid pieces per bone), expecting the same vertex order back.
 - **Delivers** posed sculpts (layers, ZTL, ZPR, sheets) to scenario-zbrush-paint-render; print
   packages (STL and 3MF in mm, report, sheets, part and key list) to the user or the printer.

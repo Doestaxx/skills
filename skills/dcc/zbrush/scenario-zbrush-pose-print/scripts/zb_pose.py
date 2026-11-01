@@ -579,7 +579,7 @@ def tpose_to_subtools(expected=None, rest_obj=None, force=False):
 
 
 def export_tpose(path, groups=False, overwrite=False):
-    """OBJ of the TPose mesh for an external rig (scenario-blender-rigging) or for joint_centres.
+    """OBJ of the TPose mesh for an external rig (doestaxx-blender-rigging) or for joint_centres.
     groups=True writes polygroups as OBJ groups (Tool:Export:Grp [verify]); keep it False for
     the round trip so no importer splits the mesh."""
     p = _p("export_grp", required=False)

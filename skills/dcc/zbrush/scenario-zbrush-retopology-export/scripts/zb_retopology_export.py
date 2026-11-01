@@ -27,7 +27,7 @@ Agent side (system python3 with numpy; PIL and cv2 optional):
   projection_verdict(), projection_from_stack()
   uv_report(), uv_verdict(), scale_report(), names_report(), obj_transform()
   map_info(), map_verdict(), normal_orientation(), height_orientation()
-  glb_to_obj()                    scenario-3d GLB to OBJ (UVs flipped to OBJ, colour as #MRGB)
+  glb_to_obj()                    doestaxx-3d GLB to OBJ (UVs flipped to OBJ, colour as #MRGB)
   roughness(), triage_ai_mesh(), orient_for_import(), hole_plugs(), cleanup_verdict()
   RENDERERS, MME_PRESETS, renderer_plan(), handoff_report()
 Pure helpers (both sides): expected_band(), levels_needed(), export_scale_for(),
@@ -2315,7 +2315,7 @@ def height_orientation(path, expect_uv=(0.25, 0.75), mid=None):
 
 
 # --------------------------------------------------------------------------------------------
-# Agent side: generated meshes (scenario-3d) and cleanup
+# Agent side: generated meshes (doestaxx-3d) and cleanup
 # --------------------------------------------------------------------------------------------
 
 _GLTF_COMP = {5120: ("b", 127.0), 5121: ("B", 255.0), 5122: ("h", 32767.0), 5123: ("H", 65535.0),
@@ -2327,7 +2327,7 @@ def _gltf_read(doc, binchunk, idx):
     np = _np()
     acc = doc["accessors"][idx]
     if "sparse" in acc:
-        raise ValueError("sparse accessors are not supported: convert with Blender (scenario-blender-expert)")
+        raise ValueError("sparse accessors are not supported: convert with Blender (doestaxx-blender-expert)")
     fmt, norm = _GLTF_COMP[acc["componentType"]]
     n = _GLTF_N[acc["type"]]
     bv = doc["bufferViews"][acc["bufferView"]]
@@ -2369,7 +2369,7 @@ def _node_matrix(node):
 
 def glb_to_obj(glb_path, obj_path, write_uvs=True, colors="auto", texture_dir=None,
                group_by="primitive"):
-    """Binary glTF (the usual scenario-3d download) to OBJ for Tool:Import: node transforms
+    """Binary glTF (the usual doestaxx-3d download) to OBJ for Tool:Import: node transforms
     applied, UVs flipped to OBJ (glTF v runs down: vt = 1 - v), winding kept (flipped under a
     mirroring transform), one g per primitive, embedded images written next to the OBJ.
     colors: "auto" writes ZBrush #MRGB polypaint from COLOR_0, else from the baseColor
@@ -2394,7 +2394,7 @@ def glb_to_obj(glb_path, obj_path, write_uvs=True, colors="auto", texture_dir=No
     used = set(doc.get("extensionsUsed", []))
     for ext in ("KHR_draco_mesh_compression", "EXT_meshopt_compression"):
         if ext in used:
-            raise ValueError(f"{ext}: decompress with Blender first (scenario-blender-expert)")
+            raise ValueError(f"{ext}: decompress with Blender first (doestaxx-blender-expert)")
     base = os.path.splitext(obj_path)[0]
     texture_dir = texture_dir or os.path.dirname(os.path.abspath(obj_path))
     images = []
@@ -2601,7 +2601,7 @@ def triage_ai_mesh(obj, expected_parts=None, symmetric_design=None, junk_frac=0.
     if expected_parts and len(parts) < expected_parts:
         plan.append(f"{len(parts)} shells for {expected_parts} intended parts: parts are fused. "
                     "Colour-separated: Polygroups From Polypaint + Groups Split [added]; else ask "
-                    "scenario-3d for part segmentation, or SliceCurve cuts by a human")
+                    "doestaxx-3d for part segmentation, or SliceCurve cuts by a human")
     if rep["boundary_loops"]:
         plan.append(f"{len(rep['boundary_loops'])} holes: Close Holes (no levels; fills get their own "
                     "polygroup: udiPVJIODX0 00:04:30); if DynaMesh then shows swiss cheese the shell is "
@@ -2759,7 +2759,7 @@ RENDERERS = {
         "handoff": "scenario-maya-lookdev or scenario-zbrush-paint-render (Redshift inside ZBrush)"},
     "unreal": {
         "mesh": "triangulated game mesh (bake and engine share one triangulation: Polycount); "
-                "FBX through scenario-maya-expert or scenario-blender-expert from the ZBrush OBJ, cm, Z-up handled by "
+                "FBX through scenario-maya-expert or doestaxx-blender-expert from the ZBrush OBJ, cm, Z-up handled by "
                 "the importer [added]",
         "zbrush": "no film displacement; decimated high (Keep UVs off) + low for an external bake "
                   "in the engine tangent basis, or Substance Bridge Low & High",
@@ -2791,9 +2791,9 @@ RENDERERS = {
         "zbrush": "MME 32Bit + exr, Mid 0.5 (or 0), SmoothUV on",
         "receiver": "Displacement node Midlevel = Mid, Scale = 1 x unit ratio [added, verify with the "
                     "live_rx_04 units test]; material displacement 'Displacement and Bump' plus a "
-                    "Subdivision modifier [added]; Normal Map node convention OPENGL (scenario-blender-uv-baking)",
-        "normal": "OpenGL (Y+); game bakes in Blender with scenario-blender-uv-baking bake_high_to_low",
-        "handoff": "scenario-blender-uv-baking, scenario-blender-texturing-shading"},
+                    "Subdivision modifier [added]; Normal Map node convention OPENGL (doestaxx-blender-uv-baking)",
+        "normal": "OpenGL (Y+); game bakes in Blender with doestaxx-blender-uv-baking bake_high_to_low",
+        "handoff": "doestaxx-blender-uv-baking, doestaxx-blender-texturing-shading"},
 }
 
 

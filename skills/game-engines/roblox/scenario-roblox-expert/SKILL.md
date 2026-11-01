@@ -209,9 +209,9 @@ open issues, and a fence. The receiver reproduces one piece of evidence before b
 
 | Asset                              | Generated with            | Lands in                                                                                  |
 | ---------------------------------- | ------------------------- | ----------------------------------------------------------------------------------------- |
-| meshes, props, characters          | scenario-3d               | scenario-roblox-assets (import, 20,000 triangles), then environment                       |
+| meshes, props, characters          | doestaxx-3d               | scenario-roblox-assets (import, 20,000 triangles), then environment                       |
 | PBR maps, tileable materials       | scenario-textures         | scenario-roblox-assets (SurfaceAppearance), scenario-roblox-environment (MaterialVariant) |
-| skyboxes                           | scenario-skyboxes         | scenario-roblox-environment (Sky, six faces)                                              |
+| skyboxes                           | doestaxx-skyboxes         | scenario-roblox-environment (Sky, six faces)                                              |
 | music, SFX, ambience, voice        | scenario-audio            | scenario-roblox-vfx-audio (under 20 MB, 7 minutes, 48 kHz)                                |
 | icons, item art, UI pieces, decals | scenario-game-assets      | scenario-roblox-ui, scenario-roblox-environment                                           |
 | flipbook frames                    | scenario-sprite-animation | scenario-roblox-vfx-audio (2x2, 4x4 or 8x8 grids)                                         |

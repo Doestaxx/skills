@@ -397,7 +397,7 @@ Test: live_hs_07_kitbash_clicks (MeshFromBrush, the radial NanoMesh set, imm_rea
 | Cage                  | the Dynamic-off original after `bake_split`                                                                              | a ZBrush-built base with clean groups                   |
 | ZRemesher per part    | `zremesh_recipe("part", target_k=...)` after `crease_by_groups`                                                          | boolean or knife results                                |
 | Quick shell           | `dynamesh_visible(res, skip_indices=[animated])`, then per SubTool `zb_ops.decimate(hs.decimate_percent(target, total))` | a static prop or a deadline (Pavlovich calls it hasty)  |
-| DCC                   | export OBJ per part; scenario-maya-modeling or scenario-blender-retopology                                               | LODs, animated parts, clean shading                     |
+| DCC                   | export OBJ per part; scenario-maya-modeling or doestaxx-blender-retopology                                               | LODs, animated parts, clean shading                     |
 | Retopo brush (2026.1) | GUI: first click asks Yes (new retopo SubTool above) or No; refuses a SubTool with levels (VD 3.5)                       | a hand-built low inside ZBrush, by a computer-use agent |
 
 ```python
@@ -546,7 +546,7 @@ assert hs.layer_safe(rec, zl.call("zb_ops", "stats"))["ok"]    # topology unchan
 10. **Handoff.** OBJ per part (matching high and low names), the last sheets and `stack_report`;
     Substance Bridge after `bridge_preflight`, or UVs and bakes by
     scenario-zbrush-retopology-export; a hand-built low by scenario-maya-modeling or
-    scenario-blender-retopology.
+    doestaxx-blender-retopology.
 
 Deterministic: every step above except Knife lines, the one-time ZModeler brush setup, and the
 clicks of P10 and P14, which are [verify] until live_hs_07 runs.

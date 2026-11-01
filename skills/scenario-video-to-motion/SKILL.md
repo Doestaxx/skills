@@ -13,7 +13,7 @@ mesh, auto-rigged and moving, or the motion alone on a standard skeleton. They a
 capability, and they differ more than their shared name suggests: which character input they take,
 which skeleton comes back, and which file formats they write.
 
-Siblings: `scenario` (connection, scope, upload, `jobs_wait`), `scenario-3d` (making or rigging the
+Siblings: `scenario` (connection, scope, upload, `jobs_wait`), `doestaxx-3d` (making or rigging the
 mesh first), `scenario-video` (generating a reference performance when no footage exists), and
 `scenario-video-editing` (trimming and resizing the clip). If a sibling skill named here is missing
 from your available skills, load it with `skill_get` (Scenario MCP) or ask the user to install it

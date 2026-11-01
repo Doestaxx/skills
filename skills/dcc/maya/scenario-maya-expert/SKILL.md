@@ -91,7 +91,7 @@ showcase proves claims with deltas of 0.0 and color drift of at most 1/255.
 | Brief                            | Skill chain                                                                                                                                           | Deliverable                                                         |
 | -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | Hard-surface prop or game asset  | scenario-maya-modeling, scenario-maya-retopology-uv, scenario-maya-lookdev, scenario-maya-pipeline-scripting (FBX)                                    | low poly, UVs, PBR set, FBX re-imported and compared                |
-| Finish an AI-generated mesh      | scenario-3d, `mx_audit` on the raw mesh, scenario-maya-retopology-uv, scenario-maya-lookdev, scenario-maya-pipeline-scripting                         | clean, UV'd asset at a stated budget, baked from the generated high |
+| Finish an AI-generated mesh      | doestaxx-3d, `mx_audit` on the raw mesh, scenario-maya-retopology-uv, scenario-maya-lookdev, scenario-maya-pipeline-scripting                         | clean, UV'd asset at a stated budget, baked from the generated high |
 | Character for keyframe animation | scenario-maya-modeling, scenario-maya-retopology-uv, scenario-maya-rigging, scenario-maya-deformation, scenario-maya-animation (range-of-motion test) | referenced rig file, deformation playblast                          |
 | Game character                   | the same chain with the game options of scenario-maya-rigging and scenario-maya-animation, then scenario-maya-pipeline-scripting                      | FBX skeletal mesh and clips for Unreal or Unity                     |
 | Animated shot                    | scenario-maya-animation (fixes in scenario-maya-rigging), then scenario-maya-lighting-rendering                                                       | approved playblast, then renders                                    |
@@ -193,5 +193,5 @@ to Maya's `sys.path`, so `Bridge().call("mx_audit", "audit", "crate_geo")` works
   patterns, undo, idempotent get-or-create, batch hygiene). Load before any non-trivial script.
 - [`references/sources.md`](references/sources.md): every source behind this skill and the toolkit,
   with what each is best for.
-- Related skills outside this set: scenario-3d (generate meshes to finish in Maya),
-  scenario-zbrush-expert and scenario-blender-expert (sister teams with the same protocol).
+- Related skills outside this set: doestaxx-3d (generate meshes to finish in Maya),
+  scenario-zbrush-expert and doestaxx-blender-expert (sister teams with the same protocol).

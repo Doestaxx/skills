@@ -17,7 +17,7 @@ the 3D asset id the previous stage returned. Discover members with `search` and 
 Image to 3D, false on Multi Image and Retexture at authoring time).
 
 Connection and the core loop: see the `scenario` skill in this repo; model-agnostic 3D work (viewer,
-capture, engine import): the `scenario-3d` skill. If a sibling skill named here is missing from your
+capture, engine import): the `doestaxx-3d` skill. If a sibling skill named here is missing from your
 available skills, load it with `skill_get` (Scenario MCP) or ask the user to install it
 (https://github.com/scenario-labs/skills#install); unattended, proceed from tool schemas and flag
 the gap.

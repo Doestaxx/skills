@@ -249,7 +249,7 @@ used here.
 
 ## Sister skills used for shape
 
-- scenario-blender-sculpting (Blender Expert Skills project): the layout of a domain skill with a
+- doestaxx-blender-sculpting (Blender Expert Skills project): the layout of a domain skill with a
   design table and gated stages.
 
 ## Revision log

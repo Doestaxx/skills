@@ -13,8 +13,8 @@ pose, and ground contact. The reliable route puts a 3D step in the middle: rebui
 untextured mesh, render a gray clay layout for every camera, then let a reference-capable image
 model repaint each layout from the original picture. The mesh fixes silhouette, scale, and
 perspective; the picture supplies identity, colors, and finish. Connection and the core generation
-loop: see the `scenario` skill. Image-to-3D model choice: `scenario-3d`. The background panorama:
-`scenario-skyboxes`. If a sibling skill named here is missing from your available skills, load it
+loop: see the `scenario` skill. Image-to-3D model choice: `doestaxx-3d`. The background panorama:
+`doestaxx-skyboxes`. If a sibling skill named here is missing from your available skills, load it
 with `skill_get` (Scenario MCP) or ask the user to install it
 (https://github.com/scenario-labs/skills#install); unattended, proceed from tool schemas and flag
 the gap.
@@ -54,7 +54,7 @@ three need Python with Pillow and numpy. Each prints its usage when run without 
    uploaded picture), then `wait=false` and `jobs_wait`. `asset_download` the GLB and save it with
    `curl -L`.
 3. Find a skybox model with `search` (target="models", query="skybox", public=true, as
-   `scenario-skyboxes` teaches; `recommend` has no skybox capability and can return a generic image
+   `doestaxx-skyboxes` teaches; `recommend` has no skybox capability and can return a generic image
    model whose edges do not wrap) and generate one panorama in the picture's style, prompting for
    "viewpoint standing in the middle of an open empty floor at eye level, the floor clearly visible
    all around, no people". Download it.

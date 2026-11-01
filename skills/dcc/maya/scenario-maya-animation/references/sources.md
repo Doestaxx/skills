@@ -52,7 +52,7 @@ for the Camporota and Graph Editor videos.
   parabola check and foot drift were already there; resistance, catch, camera-space arcs, layer
   policy, key categories and spline readiness were missing, and it suggested layers for polish
   overlap, which Elver rejects).
-- Sister skill `../2026-09-24 Blender Expert Skills/skills/scenario-blender-animation/`: ideas only
+- Sister skill `../2026-09-24 Blender Expert Skills/skills/doestaxx-blender-animation/`: ideas only
   (measurement loop, onion-skin and curve images, hold pillars); no Blender specifics carried over.
 
 ## Revision history

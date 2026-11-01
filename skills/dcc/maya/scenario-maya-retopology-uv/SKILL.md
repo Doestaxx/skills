@@ -181,7 +181,7 @@ views plus the closest shot; overlap diff images (red: high outside the low). Sc
 ## Handoffs
 
 - **Receives** from scenario-maya-modeling (base meshes, eyeballs, `mx_validate(profile="model")`
-  clean), scenario-zbrush-expert (real scale, neutral; posed sources go back), scenario-3d (FBX or
+  clean), scenario-zbrush-expert (real scale, neutral; posed sources go back), doestaxx-3d (FBX or
   OBJ [verify glTF]; its remesh only for static parts); loop faults back from
   scenario-maya-deformation with pose and numbers.
 - **Delivers to scenario-maya-rigging and scenario-maya-deformation:** a new version, `<part>_geo`

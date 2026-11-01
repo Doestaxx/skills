@@ -155,7 +155,7 @@ plan = {
     "return": "OBJ with the same vertex count and order, no triangulation or merge, armature "
               "applied, forward -Z, up Y, scale 1, one object",
 }
-# hand `plan` to scenario-blender-rigging (automatic weights, pose bones by angle, apply, export);
+# hand `plan` to doestaxx-blender-rigging (automatic weights, pose bones by angle, apply, export);
 # it returns f"{JOB}/tpose_posed.obj"
 posed = f"{JOB}/tpose_posed.obj"
 assert zp.same_order(rest["path"], posed)["ok"]        # vertex order sacred (Pavlovich, Munoz Gomez)

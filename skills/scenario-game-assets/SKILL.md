@@ -151,7 +151,7 @@ verify the ground anchor separately. A deterministic ground mask cannot repair a
 poor composition.
 
 A "low-poly" look and a low-poly mesh are different deliverables. The look is a 2D style word on an
-image model. The mesh is `scenario-3d`: whether the image-to-3D pick (`recommend`,
+image model. The mesh is `doestaxx-3d`: whether the image-to-3D pick (`recommend`,
 `capability: "img23d"`) exposes a polycount target or a topology choice is read off
 `model_schema_get`, never assumed, and when it exposes neither a separate remesh utility (its own
 billed run, found with `recommend`, `capability: "3d23d"`) brings the count down afterwards. Either

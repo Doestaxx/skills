@@ -21,9 +21,9 @@ packet. Specialists never receive a vague brief and never hand back a claim with
 | Android, iOS, phones, thermal, touch, safe area, signing, Google Play, App Store, ads, IAP                                                                        | scenario-unity-mobile              | scenario-unity-performance, scenario-unity-ui                               |
 | WebGL, Web build, itch.io, compression, server headers, WebGPU, JavaScript interop, portals                                                                       | scenario-unity-web                 | scenario-unity-performance                                                  |
 
-Sister teams: scenario-blender-expert, scenario-maya-expert, scenario-zbrush-expert (content
+Sister teams: doestaxx-blender-expert, scenario-maya-expert, scenario-zbrush-expert (content
 authored outside Unity, 1 unit = 1 m on import, scale checked by `AgentAudit.AuditModel`),
-scenario-unreal-expert (comparisons only); scenario-3d, scenario-textures, scenario-skyboxes
+doestaxx-unreal-expert (comparisons only); doestaxx-3d, scenario-textures, doestaxx-skyboxes
 generate meshes, textures and skyboxes that arrive through the import audit.
 
 ## 2. Seams: items two owners each assumed the other covered

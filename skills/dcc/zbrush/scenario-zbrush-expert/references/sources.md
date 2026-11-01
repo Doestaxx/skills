@@ -146,5 +146,5 @@ Each line: source, who, credential, where, what it is best for. Notes live in `n
 
 ## Sister skills used for shape
 
-- scenario-blender-expert (Blender Expert Skills project): the router-and-protocol shape and the
+- doestaxx-blender-expert (Blender Expert Skills project): the router-and-protocol shape and the
   review-sheet loop.

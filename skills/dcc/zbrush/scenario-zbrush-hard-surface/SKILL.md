@@ -171,16 +171,16 @@ Toolkit: [`scripts/zb_hardsurface.py`](scripts/zb_hardsurface.py)
 
 ## Handoffs
 
-- **Receives:** a concept and brief from the user; an AI mesh from scenario-3d; a DCC block from
-  scenario-maya-modeling or scenario-blender-hard-surface (OBJ, quads and tris); a forms pass from
+- **Receives:** a concept and brief from the user; an AI mesh from doestaxx-3d; a DCC block from
+  scenario-maya-modeling or doestaxx-blender-hard-surface (OBJ, quads and tris); a forms pass from
   scenario-zbrush-sculpting.
 - **Delivers:** a versioned ZTL (high SubTools, Dynamic-off cages), OBJ per part with matching high
   and low names, `stack_report` and the last sheets; to scenario-zbrush-retopology-export for UVs
   (Unwrap with crease seams, UV Master), Substance Bridge or Multi Map Exporter bakes (a polypaint
   ID travels by Send PolyPaint or an MME Texture From Polypaint map; OBJ vertex color is not
   established) and the game low poly; the 2026.1 Retopo brush is a GUI step there; to
-  scenario-maya-modeling, scenario-maya-retopology-uv, scenario-blender-retopology or
-  scenario-blender-uv-baking for a hand-built low; polypaint IDs with scenario-zbrush-paint-render;
+  scenario-maya-modeling, scenario-maya-retopology-uv, doestaxx-blender-retopology or
+  doestaxx-blender-uv-baking for a hand-built low; polypaint IDs with scenario-zbrush-paint-render;
   print parts to scenario-zbrush-pose-print.
 
 ## ZBrush 2026 notes
