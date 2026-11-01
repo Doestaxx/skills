@@ -35,8 +35,8 @@ heroes, extras, shots, each shot's length, the take and the footprint. An empty 
   would cross the zone between a camera and its subject during that shot.
 - **Expert is a cut plan, not a crowded single take.** One shared layout, cameras stored per shot,
   shots of 2 to 5 s. MiniMax H3 Max 3D to Video held three cuts, three heroes and about 140 extras
-  in one 12 s take in our test; it takes 15 s and 32 shots per request at the time of writing (read
-  the caps from `model_schema_get`). Longer, or on a model that does not hold cuts: one take per
+  in one 12 s take in a Scenario test before the fork; it took 15 s and 32 shots per request then (read
+  the current caps from `models_explore` `get`). Longer, or on a model that does not hold cuts: one take per
   shot over the same layout.
 - **Wide shots carry blocking, medium shots carry faces.** At advanced and expert, open wide for
   geography, then cut closer for the heroes.
