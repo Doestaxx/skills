@@ -4,8 +4,8 @@
   "groupings": [
     {
       "title": "Getting started",
-      "description": "Connect the Scenario MCP server and learn the core generation loop every other skill builds on.",
-      "skills": ["scenario"]
+      "description": "Connect the Higgsfield MCP server and learn the Doestaxx generation loop every other skill builds on.",
+      "skills": ["doestaxx"]
     },
     {
       "title": "Finding a direction",
@@ -35,13 +35,13 @@
         "scenario-side-view-game-kit",
         "scenario-blender-2d-animation",
         "scenario-textures",
-        "scenario-skyboxes",
-        "scenario-3d",
+        "doestaxx-skyboxes",
+        "doestaxx-3d",
         "scenario-video-to-motion",
-        "scenario-blender",
+        "doestaxx-blender",
         "scenario-patina-retexture",
         "scenario-orbit-views",
-        "scenario-walkable-room"
+        "doestaxx-walkable-room"
       ]
     },
     {
@@ -101,7 +101,7 @@
     {
       "title": "Workflows and apps",
       "description": "Discover, run, build, and publish Scenario workflows (apps), and migrate graphs from Weavy, ComfyUI, or other node editors.",
-      "skills": ["scenario-workflows", "scenario-workflow-authoring"]
+      "skills": ["doestaxx-workflows", "doestaxx-workflow-authoring"]
     },
     {
       "title": "Troubleshooting",
@@ -160,7 +160,7 @@
         "scenario-meshy",
         "scenario-rodin",
         "scenario-sparc3d",
-        "scenario-3d-worlds"
+        "doestaxx-3d-worlds"
       ]
     },
     {
@@ -182,21 +182,21 @@
       "title": "Expert tools: Blender",
       "description": "DCC software. A lead and fourteen specialists that drive Blender 5.2 through Python, headless or in a live session: sculpting, retopology, UVs and baking, shading, hair, rigging, animation, previs, blockouts for render-to-real video, Geometry Nodes, lighting, Grease Pencil, hard surface, export to game engines. Twelve test suites pass headless on Blender 5.2.1.",
       "skills": [
-        "scenario-blender-expert",
-        "scenario-blender-animation",
-        "scenario-blender-blockout",
-        "scenario-blender-export",
-        "scenario-blender-geometry-nodes",
-        "scenario-blender-grease-pencil",
-        "scenario-blender-hair",
-        "scenario-blender-hard-surface",
-        "scenario-blender-lighting-rendering",
-        "scenario-blender-previs-storyboard",
-        "scenario-blender-retopology",
-        "scenario-blender-rigging",
-        "scenario-blender-sculpting",
-        "scenario-blender-texturing-shading",
-        "scenario-blender-uv-baking"
+        "doestaxx-blender-expert",
+        "doestaxx-blender-animation",
+        "doestaxx-blender-blockout",
+        "doestaxx-blender-export",
+        "doestaxx-blender-geometry-nodes",
+        "doestaxx-blender-grease-pencil",
+        "doestaxx-blender-hair",
+        "doestaxx-blender-hard-surface",
+        "doestaxx-blender-lighting-rendering",
+        "doestaxx-blender-previs-storyboard",
+        "doestaxx-blender-retopology",
+        "doestaxx-blender-rigging",
+        "doestaxx-blender-sculpting",
+        "doestaxx-blender-texturing-shading",
+        "doestaxx-blender-uv-baking"
       ]
     },
     {
@@ -220,16 +220,16 @@
       "title": "Expert tools: Unreal Engine",
       "description": "Game engine. A lead and nine specialists that drive Unreal Engine 5.8 on macOS through Editor Python, headless jobs, and Epic's Unreal MCP server: world building, materials, lighting and rendering, gameplay, animation, cinematics, VFX, pipeline automation, performance.",
       "skills": [
-        "scenario-unreal-expert",
-        "scenario-unreal-animation",
-        "scenario-unreal-cinematics",
-        "scenario-unreal-gameplay",
-        "scenario-unreal-lighting-rendering",
-        "scenario-unreal-materials",
-        "scenario-unreal-performance",
-        "scenario-unreal-pipeline-automation",
-        "scenario-unreal-vfx",
-        "scenario-unreal-world-building"
+        "doestaxx-unreal-expert",
+        "doestaxx-unreal-animation",
+        "doestaxx-unreal-cinematics",
+        "doestaxx-unreal-gameplay",
+        "doestaxx-unreal-lighting-rendering",
+        "doestaxx-unreal-materials",
+        "doestaxx-unreal-performance",
+        "doestaxx-unreal-pipeline-automation",
+        "doestaxx-unreal-vfx",
+        "doestaxx-unreal-world-building"
       ]
     },
     {

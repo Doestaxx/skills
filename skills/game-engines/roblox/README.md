@@ -119,12 +119,12 @@ loaded.
 ## Install
 
 ```bash
-npx skills add scenario-labs/skills --skill scenario-roblox-expert scenario-roblox-animation scenario-roblox-architecture scenario-roblox-assets scenario-roblox-data scenario-roblox-environment scenario-roblox-gameplay scenario-roblox-luau scenario-roblox-monetization scenario-roblox-networking scenario-roblox-performance scenario-roblox-tooling scenario-roblox-ui scenario-roblox-vfx-audio
+npx skills add Doestaxx/skills --skill scenario-roblox-expert scenario-roblox-animation scenario-roblox-architecture scenario-roblox-assets scenario-roblox-data scenario-roblox-environment scenario-roblox-gameplay scenario-roblox-luau scenario-roblox-monetization scenario-roblox-networking scenario-roblox-performance scenario-roblox-tooling scenario-roblox-ui scenario-roblox-vfx-audio
 ```
 
 The installer puts the skills side by side, which the specialists need: they import the lead skill's
 `scripts/` (Python toolkit and Luau AgentKit). In the installer picker
-(`npx skills add scenario-labs/skills`), the family is the "Expert tools: Roblox Studio" group.
+(`npx skills add Doestaxx/skills`), the family is the "Expert tools: Roblox Studio" group.
 Update with `npx skills update`.
 
 ## Provenance
