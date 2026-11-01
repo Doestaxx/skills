@@ -5,12 +5,28 @@
     "url": "https://github.com/Doestaxx/skills"
   },
   "metadata": {
-    "description": "Agent Skills for creating production-ready images, video, audio, and 3D on the Higgsfield MCP, with ComfyUI node graphs and expert tools for DCC software and game engines"
+    "description": "Doestaxx Agent Skills for images, video, audio, and 3D across Higgsfield, fal.ai, direct model APIs, and ComfyUI, plus expert tools for DCC software and game engines"
   },
   "plugins": [
     {
+      "name": "doestaxx-studio",
+      "description": "Doestaxx Studio: 3D props and characters, 360 skies, explorable scenes, walk-in rooms, Blender, and ComfyUI pipelines, routed across Higgsfield, fal.ai, direct model APIs, and ComfyUI.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/doestaxx",
+        "./skills/doestaxx-3d",
+        "./skills/doestaxx-3d-worlds",
+        "./skills/doestaxx-blender",
+        "./skills/doestaxx-skyboxes",
+        "./skills/doestaxx-walkable-room",
+        "./skills/doestaxx-workflow-authoring",
+        "./skills/doestaxx-workflows"
+      ]
+    },
+    {
       "name": "01.-getting-started",
-      "description": "Connect the Higgsfield MCP server and learn the Doestaxx generation loop every other skill builds on.",
+      "description": "Pick the provider for each job (Higgsfield, fal.ai, direct model APIs, ComfyUI) and learn the loop every other skill builds on.",
       "source": "./",
       "strict": false,
       "skills": [

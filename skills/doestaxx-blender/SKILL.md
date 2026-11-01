@@ -1,6 +1,6 @@
 ---
 name: doestaxx-blender
-description: "Use when an agent works in Blender alongside Higgsfield generation: setting up the Higgsfield use Blender local MCP server (fnf-blender-mcp, higgsfield-use-blender, bl_* tools, /use-blender), opening, editing, rendering and saving .blend projects in a background Blender, turning a camera render into a Higgsfield image, mesh or video placed at the 3D cursor, keying camera paths, or building a hosted 3D Jutsu scene (scene_builder_3d tools, /3d-jutsu) with GLB and .blend export."
+description: "Use when an agent works in Blender alongside Doestaxx generation (Higgsfield, fal.ai, or a direct model API): setting up the Higgsfield use Blender local MCP server (fnf-blender-mcp, higgsfield-use-blender, bl_* tools, /use-blender), opening, editing, rendering and saving .blend projects in a background Blender, turning a camera render into a Higgsfield image, mesh or video placed at the 3D cursor, keying camera paths, or building a hosted 3D Jutsu scene (scene_builder_3d tools, /3d-jutsu) with GLB and .blend export."
 license: MIT
 ---
 
@@ -43,6 +43,7 @@ At authoring time:
   ```
 
   Keep `--env` after the server name. Reuse a matching existing entry; never overwrite one.
+
 - Start a fresh conversation, then verify: `bl_health` returns the version, PID and
   `background: true`. A passing `doctor` proves nothing about the conversation's tools.
 
@@ -95,11 +96,11 @@ World: `doestaxx-skyboxes`.
 
 ## Camera paths
 
-No tool keys a camera for you. In Python, key the camera's location and a Track To target, or
-parent it to a dolly on a curve (`doestaxx-blender-blockout` has `B.rail_camera`). Set the frame
-range to the shot, smooth the keys, and render the first, middle and last frames to check. For an
-orbit around a static subject: an empty at the subject, the camera parented to it, the empty's Z
-rotation keyed 0 to 360 degrees with linear interpolation.
+No tool keys a camera for you. In Python, key the camera's location and a Track To target, or parent
+it to a dolly on a curve (`doestaxx-blender-blockout` has `B.rail_camera`). Set the frame range to
+the shot, smooth the keys, and render the first, middle and last frames to check. For an orbit
+around a static subject: an empty at the subject, the camera parented to it, the empty's Z rotation
+keyed 0 to 360 degrees with linear interpolation.
 
 ## Hosted route: 3D Jutsu
 
@@ -109,9 +110,9 @@ runtime limits and links the scene-building references.
 - **Project**: `scene_builder_3d_list_projects`, or `scene_builder_3d_create_project` once. Every
   call takes `projectId`.
 - **Loop**: `scene_builder_3d_get_project` or `scene_builder_3d_query_python` for the guards, then
-  `scene_builder_3d_run_python` with `revision`, `expectedSceneSequence` and a stable
-  `operationId`. One mutation at a time; poll `scene_builder_3d_get_operation` while one is active.
-  On a stale-state conflict, query again and send new code under a new id; never replay.
+  `scene_builder_3d_run_python` with `revision`, `expectedSceneSequence` and a stable `operationId`.
+  One mutation at a time; poll `scene_builder_3d_get_operation` while one is active. On a
+  stale-state conflict, query again and send new code under a new id; never replay.
 - **Look**: render inside a query, publish with `artifacts.file(name=..., media_type="image/png")`
   and `target.publish()`, fetch with `scene_builder_3d_get_artifact`, and inspect the image.
 - **Models**: `scene_builder_3d_search_assets`, then `scene_builder_3d_import_asset` with the
@@ -126,10 +127,12 @@ runtime limits and links the scene-building references.
 
 Stop and give the user the options:
 
+- **fal.ai or a direct model API**: check their live catalogs for a dedicated model before any
+  workaround, and route per the `doestaxx` skill.
 - A generated mesh inside a hosted scene: 3D Jutsu imports catalog models only. Use the local route,
   or build the shape in bpy inside 3D Jutsu.
-- Interactive work in the user's open window (brushes, weight painting, a live viewport capture):
-  a Blender MCP add-on that attaches to the window, such as the original Scenario for Blender
+- Interactive work in the user's open window (brushes, weight painting, a live viewport capture): a
+  Blender MCP add-on that attaches to the window, such as the original Scenario for Blender
   extension.
 - A generation step Higgsfield lacks (a 360 panorama, a splat world, a node graph): ComfyUI through
   `doestaxx-workflows`.

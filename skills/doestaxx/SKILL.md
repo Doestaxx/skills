@@ -1,131 +1,101 @@
 ---
 name: doestaxx
-description: Use when connecting an AI agent to the Doestaxx creative pipeline on the Higgsfield MCP, or when a task involves generating images, video, 3D meshes, audio, textures, or game assets there. Also when picking a Higgsfield model, uploading reference media, waiting on generation jobs, pricing a run, checking credits, choosing a project folder, or hitting Higgsfield auth, unlim, or recovery_tool responses.
+description: Use when a task involves generating images, video, 3D meshes, audio, textures, or game assets for Doestaxx, or choosing which provider runs a job: Higgsfield, fal.ai, a direct model API (OpenAI, Google, ElevenLabs, Runway, Meshy, Tripo), or ComfyUI. Also when pricing a run, uploading reference media, waiting on jobs, handing files between providers, or setting up a provider connection or API key.
 license: MIT
 ---
 
-# Doestaxx on Higgsfield
+# Doestaxx
 
 ## Overview
 
-Doestaxx skills generate through the Higgsfield MCP server: images, video, audio, and 3D meshes from
-one catalog, plus bundled recipes and a hosted 3D scene builder. This skill is the core loop every
-sibling skill builds on. When Higgsfield cannot do a step, the sibling skill lists the other routes;
-node-graph pipelines run on ComfyUI through `doestaxx-workflows`.
+Doestaxx is the creative front end; the generation runs on API providers. This skill picks the
+provider for each job and holds the rules every provider shares. Every sibling skill follows it.
 
-## Setup
+| Provider          | Reached through                                          | Good for                                         | Details                                                |
+| ----------------- | -------------------------------------------------------- | ------------------------------------------------ | ------------------------------------------------------ |
+| Higgsfield        | Its MCP connector                                        | Images, video, audio, 3D meshes, hosted 3D scene | [references/higgsfield.md](references/higgsfield.md)   |
+| fal.ai            | [scripts/fal_run.py](scripts/fal_run.py), or a connector | Large open-model catalog, newest releases        | [references/fal.md](references/fal.md)                 |
+| Direct model APIs | The vendor's connector, or its REST API                  | One vendor's own model, at the source            | [references/direct-apis.md](references/direct-apis.md) |
+| ComfyUI           | `doestaxx-workflows`                                     | Custom node graphs, local models                 | The `doestaxx-workflows` skill                         |
+| Doestaxx API      | Planned, not available yet                               | Will become the first choice once it ships       | None yet                                               |
 
-- Endpoint and client config: [references/setup.md](references/setup.md). OAuth in the browser; no
-  API key passes through the conversation.
-- Never ask the user to paste, encode, or echo a secret.
-- A previously working connection now failing: re-authenticate before debugging.
-- Tool names below are bare (`generate_image`). Hosts prefix them (`mcp__Higgsfield__generate_image`).
+Read the provider's reference file before its first job in a session. Connection setup:
+[references/setup.md](references/setup.md).
+
+## Choosing the provider
+
+Take the first rule that decides:
+
+1. **The user named one.** Use it, even when another is cheaper.
+2. **A saved preference** for this kind of job. Apply it silently.
+3. **Only one available provider can do it.** Use it.
+4. **Several can.** Default to the connected MCP provider (Higgsfield) for a routine job. Offer the
+   choice when the difference matters: a model only one provider hosts, a large price gap, or a
+   quality bar the user set. Show each option's price.
+5. **None can.** Stop and list the routes for the user to choose: another provider that has a
+   dedicated model, a ComfyUI graph, a local tool (Blender, ffmpeg), or a service outside Doestaxx.
+   Never substitute a weaker method silently.
+
+Unattended, take the first route the task allows and name it in the report.
+
+## Where each provider works
+
+- **Connectors** (Higgsfield, any vendor connector) work in Claude chat, Cowork, and Claude Code.
+- **Scripts** (`fal_run.py`, `comfy_run.py`, direct REST calls) need a shell with the key in an
+  environment variable and network access to the provider's host. That means Claude Code, Cowork, or
+  a chat whose code execution can reach that host.
+- In chat, never ask the user to paste an API key. Route to a connected provider instead, and say
+  which provider a key would unlock.
 
 ## Quick reference
 
-| Step             | Tool                                                     | Notes                                                   |
-| ---------------- | -------------------------------------------------------- | ------------------------------------------------------- |
-| Find a model     | `models_explore` `recommend` or `search`                 | Free; pass `type` and the user's own words              |
-| Read constraints | `models_explore` `get` with `model_id`                   | Parameters, `medias[].roles`, aspect ratios             |
-| Price            | `generate_*` with `get_cost: true`                       | No job is submitted                                     |
-| Generate         | `generate_image`, `_video`, `_audio`, `_3d`              | All arguments inside `params`, beside `model`           |
-| Batch            | `generate_image_batch`, `_video_batch`, `_audio_batch`   | 2 to 12 independent requests                            |
-| Wait             | `jobs_wait`                                              | Up to 12 jobs, 15 s per call; poll until `all_terminal` |
-| Show             | `show_generation_by_ids` (batch) or `job_display` (one)  | Once, after every job is terminal                       |
-| Upload           | `media_upload`, PUT, `media_confirm`                     | Local file to `media_id`                                |
-| Import a URL     | `media_import_url`                                       | Web media to `media_id`                                 |
-| Destination      | `get_preferences`, `create_project`, `folder_id`         | Before the first generation in a conversation           |
-| Recipes          | `get_workflow_instructions`, `get_preset_instructions`   | Load before the jobs they own                           |
-| Credits          | `balance`, `transactions`                                | Read only                                               |
+| Step     | Every provider                                                                       |
+| -------- | ------------------------------------------------------------------------------------ |
+| Discover | Read the live catalog or model page; never reuse a model id from memory              |
+| Contract | Copy field names and input roles exactly from the model's own schema                 |
+| Price    | Price the exact request before running it, unless the user said cost does not matter |
+| Run      | One request per independent job; record its job or request id before waiting         |
+| Wait     | Poll the provider's own way; a timeout is never a reason to resubmit                 |
+| Deliver  | Save outputs to disk at once (result URLs expire), show them, then hand the files on |
 
-## Worked example
+## Worked example: a concept sketch to a rigged, walking character
 
-A textured game prop from a concept image:
+The user asks for "my knight sketch as a 3D character that walks".
 
-1. **Destination.** Call `get_preferences` before the first generation of the conversation.
-   - Create a project with `create_project` only when `auto_create_project` is true or the user asks
-     for one. Reuse its `default_folder_id` as `folder_id` on every later generation.
-   - An existing destination the user names wins. Never change saved preferences for a one-off
-     request.
-2. **Upload.** Local file the shell can read:
-   - `media_upload` with `filename` (or `files[]`, up to 20).
-   - PUT the raw bytes to each `upload_url` with `curl -T`, and check every PUT returned 200.
-   - `media_confirm` with `media_id` (or `media_ids`) and `type` (`image`, `video`, `audio`).
-   - A web URL goes through `media_import_url` instead. Only when the bytes are unreadable, call
-     `media_upload_widget` as the only tool in that turn.
-3. **Discover.** `models_explore` with `action: "recommend"`, `type: "3d"`, and a `query` holding the
-   user's words plus input context ("textured PBR prop from one reference image").
-   - `search` when the user names a model; `list` with `type` to browse.
-   - Re-discover each time. Never hard-code a generative model id in a script or doc.
-4. **Read the contract.** `models_explore` `get` on the pick. Copy parameter names verbatim and read
-   `medias[].roles`: one model takes `image`, another `image_references`.
-5. **Price.** The same call you will run, with `get_cost: true`. Show the user the credit cost
-   unless they said cost does not matter.
-6. **Run.** `generate_3d` with `params: {model, medias: [{role, value}], ...fields}`.
-   - `medias[].value` is a `media_id` or a prior `job_id`. A URL there fails.
-   - `count` (1 to 4) is variants of identical inputs. Independent prompts go to a batch tool.
-   - Apply any `adjustments` the server returns. If it returns `recovery_tool`, call that tool at
-     once, before explaining.
-7. **Wait.** `jobs_wait` with `jobs: [{index, job_id}]`. When `all_terminal` is false, wait
-   `poll_after_seconds` and call again. A timeout is not a failure and never justifies a re-run.
-8. **Show and save.** One `show_generation_by_ids` for a batch, or `job_display` for one job. Save
-   files with `curl -L` on the result URL `jobs_wait` returned.
+1. **Route.** The user named no provider and there is no saved preference. Higgsfield is connected
+   and has image-to-3D with rigging and an animation library, so it can do every step: rule 4,
+   default route. Open [references/higgsfield.md](references/higgsfield.md).
+2. **Prepare the input.** The sketch is a local file: upload it the provider's way (Higgsfield:
+   `media_upload`, PUT, `media_confirm`).
+3. **Discover and price.** Find an image-to-3D model with rigging in the live catalog, read its
+   fields, and price the exact request with rigging and the walk clip on. Show the price.
+4. **Run and wait.** Submit once, record the job id, and wait with the provider's polling tool until
+   the job is terminal.
+5. **Deliver.** Save the GLB, show it, and hand it on. For Blender or Unreal, the matching expert
+   skill imports it. A mesh check belongs to `doestaxx-3d`.
 
-## Paying for a run
+Had the user asked for "the newest open 3D model on fal", rule 1 applies: open
+[references/fal.md](references/fal.md), read the model page, and run `fal_run.py` from a shell with
+`FAL_KEY` set. In a chat without a shell key, say that, and offer Higgsfield instead.
 
-- `use_unlim`: omit it and let the server decide. If it returns `unlim_choice`, put that question to
-  the user, then call again with the same params plus their answer. Pass `true` only when the user
-  asks to spend unlimited generations.
-- `use_free_gens`: only when the user explicitly asks. A rejected free request never falls back to
-  credits without approval.
-- `balance` reports credits and plan. `show_plans_and_credits` opens the upgrade view; never buy,
-  upgrade, or cancel anything yourself.
+## Handing files between providers
 
-## Recipes and presets
+- Every provider takes inputs its own way: Higgsfield a `media_id`, fal a public URL or small data
+  URI, ComfyUI a filename on its server, a vendor API whatever its docs say.
+- So save each output to disk first, then upload it to the next provider. Never pass one provider's
+  signed URL or id to another and assume it resolves.
 
-- `get_workflow_instructions` with no argument lists Higgsfield's bundled recipes and their
-  triggers. Load the matching one before its jobs (character sheets, product shots, thumbnails,
-  websites).
-- `get_preset_instructions` resolves slash commands. `/3d-jutsu` is the hosted 3D scene builder;
-  `/use-blender` sets up the local Blender MCP. `doestaxx-blender` teaches both.
-- These are fixed recipes, not editable graphs. Custom node graphs belong to `doestaxx-workflows`.
-
-## When Higgsfield cannot do it
-
-Check `models_explore` first: the catalog changes. When nothing fits, stop and give the user the
-options instead of substituting silently:
-
-- **ComfyUI** through `doestaxx-workflows`: any node graph the user's ComfyUI server can run.
-- **Local tools**: Blender, ffmpeg, or a script on the user's machine, when the step is
-  deterministic.
-- **Another hosted service** the sibling skill names for that capability.
-
-Unattended, take the first route the task already allows and say which in the report.
+## Sibling skills
 
 If a sibling skill named here is missing from your available skills, ask the user to install it from
 the Doestaxx skills repository (https://github.com/Doestaxx/skills); unattended, proceed from tool
 schemas and flag the gap.
 
-## Errors and recovery
-
-- **Transport timeout on a `generate_*` call**: the job may exist. Never resubmit automatically.
-  Check `show_generations` for it, or ask, before any re-run.
-- **`recovery_tool` in a response**: call it immediately with what it asks for.
-- **Rejected opt-in** (`use_unlim` or `use_free_gens`): reported, never silently charged. Ask before
-  retrying on credits.
-- **Media role rejected**: re-read `medias[].roles` from `models_explore` `get`. The server coerces
-  roles only when unambiguous.
-- **3D tools taking `model_url`** (rigging, remesh, retexture): pass the completed GLB's public HTTPS
-  URL, or the `url` `media_upload` returned for an uploaded `.glb` (confirmed as `type: "file"`).
-  Never its `upload_url`, never a `job_id`.
-
 ## Common mistakes
 
-- Putting a URL in `medias[].value`: it takes a `media_id` or `job_id` only.
-- Arguments outside `params`: model fields sit beside `model` inside `params`.
-- Calling `job_display` once per batch job: use one `show_generation_by_ids` for the set.
-- Looping `jobs_wait` without reading `poll_after_seconds`, or passing more than 12 jobs.
-- Generating before `get_preferences`: results land outside the user's project.
-- Using the catalog's game-pipeline-only audio models for standalone audio: the `generate_audio`
-  description names them.
-- Asking the user to re-upload a file the shell can already read.
+- Asking for, echoing, or logging an API key. Keys live in environment variables only.
+- Resubmitting after a timeout or a dropped connection: check whether the job exists first.
+- Reusing a model id from memory. Catalogs change on every provider.
+- Passing a URL where Higgsfield wants a `media_id`, or a local path where fal wants a URL.
+- Leaving outputs at their result URLs. They expire; save them.
+- Switching provider mid-job without saying so. A route change is the user's call.

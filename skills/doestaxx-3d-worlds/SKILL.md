@@ -1,6 +1,6 @@
 ---
 name: doestaxx-3d-worlds
-description: "Use when a task asks for a navigable 3D world, explorable environment, walkable level, graybox, or Gaussian splat scene through the Higgsfield MCP: text-to-world, image-to-world, a concept painting or location photo rebuilt as a 3D set, new camera angles of one place, or a 360 panorama turned into a space. Keywords: 3D Jutsu, scene_builder_3d, world generation, splat, 3DGS, spz, World Labs Marble, VR."
+description: "Use when a task asks for a navigable 3D world, explorable environment, walkable level, graybox, or Gaussian splat scene for Doestaxx on Higgsfield 3D Jutsu, fal.ai, or an external world service: text-to-world, image-to-world, a concept painting or location photo rebuilt as a 3D set, new camera angles of one place, or a 360 panorama turned into a space. Keywords: 3D Jutsu, scene_builder_3d, world generation, splat, 3DGS, spz, World Labs Marble, VR."
 license: MIT
 ---
 
@@ -35,25 +35,25 @@ schemas and flag the gap.
 Load `get_preset_instructions` with `{ preset: "/3d-jutsu" }` once before any scene tool. It owns
 the runtime rules; this skill only routes.
 
-| You have                     | Route                                                                    |
-| ---------------------------- | ------------------------------------------------------------------------ |
-| A text idea                  | 3D Jutsu scene from a written plan, then renders                         |
-| One concept image or photo   | 3D Jutsu with the `/3d-jutsu/references/location-new-angles` reference   |
+| You have                     | Route                                                                     |
+| ---------------------------- | ------------------------------------------------------------------------- |
+| A text idea                  | 3D Jutsu scene from a written plan, then renders                          |
+| One concept image or photo   | 3D Jutsu with the `/3d-jutsu/references/location-new-angles` reference    |
 | New views of one place       | Same reference, then `scene_builder_3d_generate_angles` per approved shot |
-| A 360 panorama               | Reference only: build the scene, or offer a splat service                |
-| Many photos or a walkthrough | No Higgsfield route: offer the splat options                             |
-| One object                   | `doestaxx-3d`, not a world                                               |
+| A 360 panorama               | Reference only: build the scene, or offer a splat service                 |
+| Many photos or a walkthrough | No Higgsfield route: offer the splat options                              |
+| One object                   | `doestaxx-3d`, not a world                                                |
 
-| Step           | Tool                                                                 |
-| -------------- | -------------------------------------------------------------------- |
-| Project        | `scene_builder_3d_list_projects` or `scene_builder_3d_create_project` |
-| Guards         | `scene_builder_3d_get_project`, then `scene_builder_3d_query_python` |
-| Edit           | `scene_builder_3d_run_python` with `revision`, `expectedSceneSequence` |
-| Props          | `scene_builder_3d_search_assets`, then `scene_builder_3d_import_asset` |
-| Look           | Render in a query, publish via `artifacts`, `scene_builder_3d_get_artifact` |
-| Show           | `scene_builder_3d_show_scene` once per review, exact `revisionAfter` |
-| Files          | `scene_builder_3d_get_glb`, `scene_builder_3d_get_blend`             |
-| AI angle       | `scene_builder_3d_generate_angles`, then `scene_builder_3d_get_generation` |
+| Step     | Tool                                                                        |
+| -------- | --------------------------------------------------------------------------- |
+| Project  | `scene_builder_3d_list_projects` or `scene_builder_3d_create_project`       |
+| Guards   | `scene_builder_3d_get_project`, then `scene_builder_3d_query_python`        |
+| Edit     | `scene_builder_3d_run_python` with `revision`, `expectedSceneSequence`      |
+| Props    | `scene_builder_3d_search_assets`, then `scene_builder_3d_import_asset`      |
+| Look     | Render in a query, publish via `artifacts`, `scene_builder_3d_get_artifact` |
+| Show     | `scene_builder_3d_show_scene` once per review, exact `revisionAfter`        |
+| Files    | `scene_builder_3d_get_glb`, `scene_builder_3d_get_blend`                    |
+| AI angle | `scene_builder_3d_generate_angles`, then `scene_builder_3d_get_generation`  |
 
 ## Worked example: graybox a level from a concept image
 
@@ -75,8 +75,8 @@ the runtime rules; this skill only routes.
    with the concept. Fix the largest mismatch, re-render, repeat. A succeeded edit proves the code
    ran, not that the scene is right.
 7. **Dress.** `scene_builder_3d_search_assets` for catalog props, then
-   `scene_builder_3d_import_asset` with the result's `importArguments` copied verbatim. One
-   mutation at a time, imports included.
+   `scene_builder_3d_import_asset` with the result's `importArguments` copied verbatim. One mutation
+   at a time, imports included.
 8. **Show.** `scene_builder_3d_show_scene` once with the final `revisionAfter`.
 9. **Deliver.** `scene_builder_3d_get_glb` for the engine and `scene_builder_3d_get_blend` for the
    editable source, only when the user wants files. Procedural shaders and world lighting do not
@@ -87,8 +87,8 @@ the runtime rules; this skill only routes.
     `scene_builder_3d_get_generation`. On an uncertain response, repeat the same `requestId` and
     arguments, never a new one.
 
-Before step 10, state the shot count and the cost, and wait for approval. A request for "new
-angles" is not approval of a paid batch.
+Before step 10, state the shot count and the cost, and wait for approval. A request for "new angles"
+is not approval of a paid batch.
 
 ## Errors
 
@@ -103,6 +103,8 @@ angles" is not approval of a paid batch.
 
 Give the user these options for a real splat or a photo-faithful world, and let them choose:
 
+- **fal.ai or a direct model API**: check their live catalogs for a single-image world or splat
+  model before any workaround, and route per the `doestaxx` skill.
 - **World Labs Marble** (at authoring time): text, one image, a 360 panorama, several photos, or a
   video to a navigable splat, with mesh export. A panorama from `doestaxx-skyboxes` can feed it.
 - **ComfyUI** through `doestaxx-workflows`: 3D or splat nodes, if the user's server has them

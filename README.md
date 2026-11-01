@@ -105,6 +105,18 @@ Or add `https://mcp.scenario.com/mcp` to any MCP client and sign in with a Scena
 or use an [API key](https://app.scenario.com/settings/api). Full setup lives in the `scenario`
 skill.
 
+### Use it in Claude
+
+The Doestaxx Studio plugin bundles every converted skill.
+
+- **Claude chat or Cowork**: Customize, Plugins, Add, Add marketplace, Add from a repository, then
+  `Doestaxx/skills`, and turn on `doestaxx-studio`. Or upload the zip that
+  `python3 scripts/package_studio_plugin.py` writes to `dist/`.
+- **Claude Code**: `/plugin marketplace add Doestaxx/skills`, then
+  `/plugin install doestaxx-studio@doestaxx-skills`.
+- Connect the Higgsfield connector for generation. fal.ai and direct model APIs need their keys in
+  the environment of a shell (Claude Code or Cowork); chat uses connectors only.
+
 ## Staying up to date
 
 Releases are how changes become visible: every feature, fix, and documentation change merged to
@@ -124,11 +136,12 @@ tags a version, updates `CHANGELOG.md` in this repository, publishes a
 
 ### Getting started
 
-Connect the Higgsfield MCP server and learn the Doestaxx generation loop every other skill builds on.
+Pick the provider for each job (Higgsfield, fal.ai, direct model APIs, ComfyUI) and learn the loop
+every other skill builds on.
 
-| Skill                                | Use it for                                                                                                  |
-| ------------------------------------ | ----------------------------------------------------------------------------------------------------------- |
-| [doestaxx](skills/doestaxx/SKILL.md) | Connecting to the Higgsfield MCP and the core loop: discover, price, generate, wait, show, save, upload, fallbacks |
+| Skill                                | Use it for                                                                                                   |
+| ------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| [doestaxx](skills/doestaxx/SKILL.md) | Provider routing across Higgsfield, fal.ai, direct model APIs, and ComfyUI; pricing, waiting, file hand-offs |
 
 ### Finding a direction
 
@@ -167,13 +180,13 @@ interactive scenes.
 | [scenario-side-view-game-kit](skills/scenario-side-view-game-kit/SKILL.md)     | Side-scroller and platformer art: side-view pixel sprite strips for a hero and enemies (run, walk, attack, hurt, poses), parallax layers, seamless wall texture, platform strip, props                                                                                                            |
 | [scenario-blender-2d-animation](skills/scenario-blender-2d-animation/SKILL.md) | A side-scroller shot animated in Blender from Scenario pictures: a concept frame that locks the look, parallax layers, props and a hero run cycle on its reference, flat image cards with an orthographic camera, keyed jumps and rigid-body props, and a whole new look by swapping the pictures |
 | [scenario-textures](skills/scenario-textures/SKILL.md)                         | Seamless and tileable textures, PBR materials, tiling-safe upscaling, engine-ready sizing                                                                                                                                                                                                         |
-| [doestaxx-skyboxes](skills/doestaxx-skyboxes/SKILL.md)                         | 360 panoramas built from 2:1 image generation: seam repair, pole handling, upscale, cubemap export, other routes |
-| [doestaxx-3d](skills/doestaxx-3d/SKILL.md)                                     | Text, image, or multi-view to GLB meshes on Higgsfield, rigging, remesh, retexture, local GLB checks |
+| [doestaxx-skyboxes](skills/doestaxx-skyboxes/SKILL.md)                         | 360 panoramas built from 2:1 image generation: seam repair, pole handling, upscale, cubemap export, other routes                                                                                                                                                                                  |
+| [doestaxx-3d](skills/doestaxx-3d/SKILL.md)                                     | Text, image, or multi-view to GLB meshes on Higgsfield, rigging, remesh, retexture, local GLB checks                                                                                                                                                                                              |
 | [scenario-video-to-motion](skills/scenario-video-to-motion/SKILL.md)           | Motion capture from a reference or generated video: an uploaded character auto-rigged and animated, or motion alone on a Mixamo or MetaHuman skeleton, with in-place, looping, and engine-ready exports                                                                                           |
 | [doestaxx-blender](skills/doestaxx-blender/SKILL.md)                           | Drive an open Blender scene through the Scenario for Blender extension's local MCP server: read the scene, quote and run generations, capture viewport references, place results, plan camera paths                                                                                               |
 | [scenario-patina-retexture](skills/scenario-patina-retexture/SKILL.md)         | PATINA PBR retexture of a finished mesh: material families, one map set per family, Blender apply with geometry untouched, matched before/after comparison film                                                                                                                                   |
 | [scenario-orbit-views](skills/scenario-orbit-views/SKILL.md)                   | New camera angles of one picture through a 3D intermediary: clay layouts in a grounded panorama, repaint per camera, matched transparent set                                                                                                                                                      |
-| [doestaxx-walkable-room](skills/doestaxx-walkable-room/SKILL.md)               | A room from one interior photo to walk into: clean plate, splat or mesh room, PBR props, physics viewer |
+| [doestaxx-walkable-room](skills/doestaxx-walkable-room/SKILL.md)               | A room from one interior photo to walk into: clean plate, splat or mesh room, PBR props, physics viewer                                                                                                                                                                                           |
 
 ### Video and audio
 
@@ -246,9 +259,9 @@ from social feeds to shops, storefronts, and print.
 Discover, run, build, and publish Scenario workflows (apps), and migrate graphs from Weavy, ComfyUI,
 or other node editors.
 
-| Skill                                                                      | Use it for                                                                                                                                               |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [doestaxx-workflows](skills/doestaxx-workflows/SKILL.md)                   | Running ComfyUI node graphs over its HTTP API, passing media to and from Higgsfield, other routes |
+| Skill                                                                      | Use it for                                                                                           |
+| -------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| [doestaxx-workflows](skills/doestaxx-workflows/SKILL.md)                   | Running ComfyUI node graphs over its HTTP API, passing media to and from Higgsfield, other routes    |
 | [doestaxx-workflow-authoring](skills/doestaxx-workflow-authoring/SKILL.md) | Authoring and editing ComfyUI API-format graphs, node discovery, UI-to-API conversion, graph imports |
 
 ### Troubleshooting
@@ -321,12 +334,12 @@ scoring.
 The top 3D families in depth: mesh generation, retexture and rigging toolchains, portraits, and
 explorable worlds and splats.
 
-| Skill                                                    | Use it for                                                                                                                                                                              |
-| -------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [scenario-meshy](skills/scenario-meshy/SKILL.md)         | Meshy 3D: generate from image, multi-view, or text, then retexture, remesh, UV unwrap, rig, or animate; texture precedence, Ultra mode, polycount traps                                 |
-| [scenario-rodin](skills/scenario-rodin/SKILL.md)         | Rodin 3D: member selection (image-to-3D, text-to-3D, Fast lanes, Bang! mesh splitting), full versus Fast parameter dialects, topology and tier traps, cost                              |
-| [scenario-sparc3d](skills/scenario-sparc3d/SKILL.md)     | Sparc3D image-to-3D: ordered multi-view input, mesh vs textured output, per-member resolution spellings, face budgets, long-job waits                                                   |
-| [doestaxx-3d-worlds](skills/doestaxx-3d-worlds/SKILL.md) | Explorable 3D scenes on hosted 3D Jutsu from an image, honest limits versus splats, external splat routes |
+| Skill                                                    | Use it for                                                                                                                                                 |
+| -------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [scenario-meshy](skills/scenario-meshy/SKILL.md)         | Meshy 3D: generate from image, multi-view, or text, then retexture, remesh, UV unwrap, rig, or animate; texture precedence, Ultra mode, polycount traps    |
+| [scenario-rodin](skills/scenario-rodin/SKILL.md)         | Rodin 3D: member selection (image-to-3D, text-to-3D, Fast lanes, Bang! mesh splitting), full versus Fast parameter dialects, topology and tier traps, cost |
+| [scenario-sparc3d](skills/scenario-sparc3d/SKILL.md)     | Sparc3D image-to-3D: ordered multi-view input, mesh vs textured output, per-member resolution spellings, face budgets, long-job waits                      |
+| [doestaxx-3d-worlds](skills/doestaxx-3d-worlds/SKILL.md) | Explorable 3D scenes on hosted 3D Jutsu from an image, honest limits versus splats, external splat routes                                                  |
 
 ### Expert tools: ZBrush
 

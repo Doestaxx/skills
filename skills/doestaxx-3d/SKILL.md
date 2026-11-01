@@ -1,6 +1,6 @@
 ---
 name: doestaxx-3d
-description: Use when generating or handling 3D meshes on the Higgsfield MCP, including image-to-3D, text-to-3D, or multi-view reconstruction to GLB, PBR-textured or game-ready props and characters, low-poly or quad topology, triangle budgets, remesh, retexture, auto-rigging a humanoid, applying an animation clip, or saving a model for Unity, Unreal, Godot, or Blender. Keywords: generate_3d, Meshy, Tripo, Hunyuan3D, SAM 3D, animation_actions.
+description: Use when generating or handling 3D meshes for Doestaxx on Higgsfield, fal.ai, or a direct 3D API (Meshy, Tripo), including image-to-3D, text-to-3D, or multi-view reconstruction to GLB, PBR-textured or game-ready props and characters, low-poly or quad topology, triangle budgets, remesh, retexture, auto-rigging a humanoid, applying an animation clip, or saving a model for Unity, Unreal, Godot, or Blender. Keywords: generate_3d, Meshy, Tripo, Hunyuan3D, SAM 3D, animation_actions.
 license: MIT
 ---
 
@@ -11,8 +11,9 @@ license: MIT
 Generate a concept image first, then run image-to-3D: it gives more art direction than text-to-3D.
 Every 3D run goes through `generate_3d`, which returns a GLB (one member can return FBX). Rigging,
 remesh, and retexture are separate `generate_3d` runs on a finished mesh's URL. Walkable scenes:
-`doestaxx-3d-worlds`. Inside Blender: `doestaxx-blender`. Connection and the core loop: the
-`doestaxx` skill.
+`doestaxx-3d-worlds`. Inside Blender: `doestaxx-blender`. Provider choice and the core loop: the
+`doestaxx` skill. Steps below use Higgsfield tool names, the default route; the same procedure holds
+on fal.ai or a direct 3D API through their reference files there.
 
 If a sibling skill named here is missing from your available skills, ask the user to install it from
 the Doestaxx skills repository (https://github.com/Doestaxx/skills); unattended, proceed from tool
@@ -20,22 +21,22 @@ schemas and flag the gap.
 
 ## Quick reference
 
-| Step         | Tool                                                  | Notes                                       |
-| ------------ | ----------------------------------------------------- | ------------------------------------------- |
-| Find members | `models_explore` `list` or `recommend`, `type: "3d"`  | Re-discover each session                    |
-| Contract     | `models_explore` `get`                                | Parameters, ranges, `medias[].roles`        |
-| Concept      | `generate_image`                                      | One centered subject, plain background      |
-| Generate     | `generate_3d` with `get_cost: true`, then for real    | Image ids go in `medias`                    |
-| Wait, show   | `jobs_wait`, then `job_display`                       | Result URL in the `jobs_wait` row           |
-| Rig clip ids | `animation_actions`                                   | Free; shows preview GIFs                    |
-| Post-process | `generate_3d` with a rigging, remesh, retexture model | Takes `model_url`, never `medias`           |
+| Step         | Tool                                                  | Notes                                  |
+| ------------ | ----------------------------------------------------- | -------------------------------------- |
+| Find members | `models_explore` `list` or `recommend`, `type: "3d"`  | Re-discover each session               |
+| Contract     | `models_explore` `get`                                | Parameters, ranges, `medias[].roles`   |
+| Concept      | `generate_image`                                      | One centered subject, plain background |
+| Generate     | `generate_3d` with `get_cost: true`, then for real    | Image ids go in `medias`               |
+| Wait, show   | `jobs_wait`, then `job_display`                       | Result URL in the `jobs_wait` row      |
+| Rig clip ids | `animation_actions`                                   | Free; shows preview GIFs               |
+| Post-process | `generate_3d` with a rigging, remesh, retexture model | Takes `model_url`, never `medias`      |
 
 Members split by job (live at authoring time; confirm with `list`):
 
 - **One image**: Meshy, Tripo, and Hunyuan3D image-to-3D members, plus SAM 3D for lifting one object
   out of a busy photo (its `prompt` names the object).
-- **Several views**: Meshy multi-image (1 to 4) and Tripo multiview (2 to 4 ordered views). Hunyuan3D
-  takes one image or several.
+- **Several views**: Meshy multi-image (1 to 4) and Tripo multiview (2 to 4 ordered views).
+  Hunyuan3D takes one image or several.
 - **Text only**: Meshy, Tripo, and Hunyuan3D text-to-3D members.
 - **Human body**: SAM 3D Body reconstructs a person's shape and pose, not a game asset.
 - **Finished mesh**: rigging, remesh, and retexture members take `model_url`.
@@ -56,24 +57,24 @@ Members split by job (live at authoring time; confirm with `list`):
    - Quad caps sit lower than triangle caps on some members (Tripo P2 halved its cap with `quad`).
    - Never invent a face field. No field means remesh afterwards.
 4. **Texture dials.** Read them before promising a look:
-   - Meshy image-to-3D defaulted `should_texture` to false: a bare gray mesh unless set. `enable_pbr`
-     needs `should_texture: true`.
+   - Meshy image-to-3D defaulted `should_texture` to false: a bare gray mesh unless set.
+     `enable_pbr` needs `should_texture: true`.
    - Tripo members defaulted `pbr` to true, and PBR also enables textures.
-   - `delight` (Tripo P2) strips lighting baked into the reference so the mesh relights in the engine.
-     Keep it on unless painted shading is the art style.
+   - `delight` (Tripo P2) strips lighting baked into the reference so the mesh relights in the
+     engine. Keep it on unless painted shading is the art style.
    - Separate seeds (`seed`, `texture_seed`): hold `seed` and the image, vary `texture_seed` for
      texture variants on one shape.
    - `auto_size` scales to real-world meters, off by default. Set it for a real-scale import.
-5. **Price, run, wait.** `generate_3d` with `params: {model, medias: [{role, value: <media_id>}],
-   ...fields, get_cost: true}`. Copy the role from `get` (`image` on Meshy, `image_references` on
-   Tripo and Hunyuan3D). Then run without `get_cost`, and `jobs_wait` on the job. A 3D job takes
-   minutes: keep polling, never resubmit.
+5. **Price, run, wait.** `generate_3d` with
+   `params: {model, medias: [{role, value: <media_id>}], ...fields, get_cost: true}`. Copy the role
+   from `get` (`image` on Meshy, `image_references` on Tripo and Hunyuan3D). Then run without
+   `get_cost`, and `jobs_wait` on the job. A 3D job takes minutes: keep polling, never resubmit.
 6. **Show and save.** `job_display` the job, then `curl -L -o chest.glb "<result url>"`.
 7. **Inspect.** Check the file against the budget before delivering (snippet below).
 
 **Text only.** When the user wants no concept to approve, use a text-to-3D member and describe the
-object and its required parts in `prompt`. Meshy's text member has `mode: "preview"` (geometry
-only) and `"full"` (textured): iterate on shape with preview, comparing `get_cost` quotes.
+object and its required parts in `prompt`. Meshy's text member has `mode: "preview"` (geometry only)
+and `"full"` (textured): iterate on shape with preview, comparing `get_cost` quotes.
 
 **Multi-view.** Pass every view of one subject in `medias`. Read the member's description for view
 order: Tripo multiview wants ordered views, and a swapped left/right pair can fuse front and back
@@ -141,6 +142,8 @@ every output before feeding it onward.
 
 Stop and give the user these options when the need is outside the catalog:
 
+- **fal.ai or a direct model API**: check their live catalogs for a dedicated model before any
+  workaround, and route per the `doestaxx` skill.
 - **Non-biped rigs** (quadruped, avian, serpentine): rig in Blender through `doestaxx-blender`, or a
   ComfyUI graph through `doestaxx-workflows` if their server has rigging nodes.
 - **UV unwrap or part segmentation as its own step**: Blender (`doestaxx-blender`) or a ComfyUI

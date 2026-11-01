@@ -4,7 +4,7 @@
   "groupings": [
     {
       "title": "Getting started",
-      "description": "Connect the Higgsfield MCP server and learn the Doestaxx generation loop every other skill builds on.",
+      "description": "Pick the provider for each job (Higgsfield, fal.ai, direct model APIs, ComfyUI) and learn the loop every other skill builds on.",
       "skills": ["doestaxx"]
     },
     {

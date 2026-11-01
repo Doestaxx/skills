@@ -1,6 +1,6 @@
 ---
 name: doestaxx-workflows
-description: "Use when a task involves running a node-graph pipeline: a ComfyUI workflow, a saved app or multi-step generation graph, anything the user calls a workflow, or a step Higgsfield's catalog cannot do. Triggers include queueing a ComfyUI API-format graph, setting its inputs, uploading reference images to ComfyUI, waiting on a prompt_id, downloading outputs, node_errors, missing custom nodes, or chaining ComfyUI and Higgsfield. Creating or editing graphs is doestaxx-workflow-authoring."
+description: "Use when a task involves running a node-graph pipeline: a ComfyUI workflow, a saved app or multi-step generation graph, anything the user calls a workflow, or a step the API providers (Higgsfield, fal.ai, direct model APIs) cannot do. Triggers include queueing a ComfyUI API-format graph, setting its inputs, uploading reference images to ComfyUI, waiting on a prompt_id, downloading outputs, node_errors, missing custom nodes, or chaining ComfyUI and Higgsfield. Creating or editing graphs is doestaxx-workflow-authoring."
 license: MIT
 ---
 
@@ -18,9 +18,9 @@ If a sibling skill named here is missing from your available skills, ask the use
 the Doestaxx skills repository (https://github.com/Doestaxx/skills); unattended, proceed from tool
 schemas and flag the gap.
 
-[scripts/comfy_run.py](scripts/comfy_run.py) is the agent's tool for every step below: it checks
-the server, uploads images, queues a graph with input overrides, waits, and downloads outputs. It
-uses only the standard library. Run it with `python3`; `--help` prints its subcommands.
+[scripts/comfy_run.py](scripts/comfy_run.py) is the agent's tool for every step below: it checks the
+server, uploads images, queues a graph with input overrides, waits, and downloads outputs. It uses
+only the standard library. Run it with `python3`; `--help` prints its subcommands.
 
 ## Setup
 
@@ -28,20 +28,20 @@ uses only the standard library. Run it with `python3`; `--help` prints its subco
   Unset: ask the user for it, never guess a host.
 - `COMFYUI_TOKEN`, optional, is sent as a bearer token for a server behind an auth proxy. Never ask
   for, print, or echo its value.
-- A vanilla ComfyUI server has no authentication. Never suggest exposing its port to the internet;
-  a reverse proxy with auth goes in front.
+- A vanilla ComfyUI server has no authentication. Never suggest exposing its port to the internet; a
+  reverse proxy with auth goes in front.
 - A server on the user's own machine is unreachable from a cloud sandbox. Run the script on that
   machine (a linked device shell), or use a server the sandbox can reach.
 
 ## Quick reference
 
-| Step              | Command or route                                           | Notes                                    |
-| ----------------- | ---------------------------------------------------------- | ---------------------------------------- |
-| Reach the server  | `comfy_run.py check`                                       | Version and devices from `/system_stats` |
-| Check the graph   | `comfy_run.py check graph.json`                            | Every `class_type` in `/object_info`     |
-| Upload an image   | `comfy_run.py upload ref.png`                              | Prints the `LoadImage` value             |
-| Run               | `comfy_run.py run graph.json --set 6.text='"..."' --out d` | Queues, waits, downloads                 |
-| Fixed recipe      | `get_workflow_instructions` (Higgsfield)                   | Bundled recipes, not editable            |
+| Step             | Command or route                                           | Notes                                    |
+| ---------------- | ---------------------------------------------------------- | ---------------------------------------- |
+| Reach the server | `comfy_run.py check`                                       | Version and devices from `/system_stats` |
+| Check the graph  | `comfy_run.py check graph.json`                            | Every `class_type` in `/object_info`     |
+| Upload an image  | `comfy_run.py upload ref.png`                              | Prints the `LoadImage` value             |
+| Run              | `comfy_run.py run graph.json --set 6.text='"..."' --out d` | Queues, waits, downloads                 |
+| Fixed recipe     | `get_workflow_instructions` (Higgsfield)                   | Bundled recipes, not editable            |
 
 API routes behind the script: `POST /prompt` queues (`prompt_id`, or 400 with `node_errors`),
 `GET /history/{prompt_id}` holds outputs once done, `GET /view` serves files, `POST /upload/image`
@@ -54,8 +54,8 @@ stores inputs, `POST /interrupt` stops the running prompt.
   mode on).
 - A UI-format save (a `nodes` list plus `links`) is rejected by the script with a pointer to
   `doestaxx-workflow-authoring`, which converts it.
-- An input's key is `NODE_ID.INPUT_NAME`. Read ids and names from the graph file itself; node
-  titles in the editor are not keys.
+- An input's key is `NODE_ID.INPUT_NAME`. Read ids and names from the graph file itself; node titles
+  in the editor are not keys.
 
 ## Worked example: a ComfyUI graph inside a Higgsfield pipeline
 

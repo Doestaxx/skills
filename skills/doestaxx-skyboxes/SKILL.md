@@ -1,6 +1,6 @@
 ---
 name: doestaxx-skyboxes
-description: Use when a task needs a skybox, 360 panorama, equirectangular image, environment map, HDRI-style backdrop, or VR backdrop made through the Higgsfield MCP. Triggers include text-to-skybox, turning a photo into a 360 environment, fixing a panorama's wrap seam or poles, upscaling a panorama, restyling its mood, or exporting equirectangular or cubemap layouts for Unity, Unreal, or Godot.
+description: Use when a task needs a skybox, 360 panorama, equirectangular image, environment map, HDRI-style backdrop, or VR backdrop made for Doestaxx on Higgsfield, fal.ai, or a dedicated skybox service. Triggers include text-to-skybox, turning a photo into a 360 environment, fixing a panorama's wrap seam or poles, upscaling a panorama, restyling its mood, or exporting equirectangular or cubemap layouts for Unity, Unreal, or Godot.
 license: MIT
 ---
 
@@ -24,15 +24,15 @@ schemas and flag the gap.
 
 ## Quick reference
 
-| Step          | Tool                                                    | Notes                                         |
-| ------------- | ------------------------------------------------------- | --------------------------------------------- |
-| Find a 2:1    | `models_explore` `list`, `type: "image"`                | Keep members whose `aspect_ratios` has `2:1`  |
-| Generate      | `generate_image`, `aspect_ratio: "2:1"`                 | `get_cost: true` first                        |
-| Widen to 2:1  | `generate_image` with an outpaint member                | Per-side pixel expansion; exact width         |
-| Seam repair   | Local roll, then `generate_image` masked inpaint        | Members with a `mask` role                    |
-| Upscale       | `upscale_image` or an exact-size upscaler member        | Re-check the seam afterwards                  |
-| Cubemap       | `ffmpeg -vf v360=e:c3x2` or `v360=e:c6x1`               | Local, free                                   |
-| Seam check    | Local column comparison                                 | Free; run on every delivered file             |
+| Step         | Tool                                             | Notes                                        |
+| ------------ | ------------------------------------------------ | -------------------------------------------- |
+| Find a 2:1   | `models_explore` `list`, `type: "image"`         | Keep members whose `aspect_ratios` has `2:1` |
+| Generate     | `generate_image`, `aspect_ratio: "2:1"`          | `get_cost: true` first                       |
+| Widen to 2:1 | `generate_image` with an outpaint member         | Per-side pixel expansion; exact width        |
+| Seam repair  | Local roll, then `generate_image` masked inpaint | Members with a `mask` role                   |
+| Upscale      | `upscale_image` or an exact-size upscaler member | Re-check the seam afterwards                 |
+| Cubemap      | `ffmpeg -vf v360=e:c3x2` or `v360=e:c6x1`        | Local, free                                  |
+| Seam check   | Local column comparison                          | Free; run on every delivered file            |
 
 ## Worked example: stylized forest skybox
 
@@ -48,6 +48,7 @@ schemas and flag the gap.
 
    Price with `get_cost: true`, then run with `count: 2`. `jobs_wait`, `job_display`, and save both
    with `curl -L`.
+
 3. **Check the seam** (free, snippet below). A seamless panorama scores a ratio near zero (under
    0.01 on a seamless test image at authoring time); an unrepaired one scores near or above 1. Most
    generic outputs fail.
@@ -71,6 +72,7 @@ schemas and flag the gap.
      invented detail breaks the wrap.
 
    Re-run the seam check on the upscaled file. Repeat step 4 if it fails.
+
 7. **Export.** Equirectangular PNG for engines that take it. Cubemaps locally:
    - `ffmpeg -i sky.png -vf v360=e:c3x2 cube_3x2.png` (a 2048x1024 input gave 1536x1024).
    - `ffmpeg -i sky.png -vf v360=e:c6x1 cube_strip.png` (3072x512 from the same input).
@@ -124,9 +126,11 @@ invented. Tell the user so.
 When the user needs guaranteed seams and poles, or a true sphere from a photo, give them these
 options and let them choose:
 
+- **fal.ai or a direct model API**: check their live catalogs for a dedicated 360 panorama model
+  before any workaround, and route per the `doestaxx` skill.
 - **A rendered panorama, seamless by construction**: model the environment in a hosted 3D Jutsu
-  scene or local Blender (`doestaxx-blender`) and render an equirectangular panoramic camera.
-  Query the camera's panorama properties first; they move between Blender versions.
+  scene or local Blender (`doestaxx-blender`) and render an equirectangular panoramic camera. Query
+  the camera's panorama properties first; they move between Blender versions.
 - **ComfyUI** through `doestaxx-workflows`: a 360 panorama graph with a seam-aware sampler or a
   panorama LoRA, if the user's server has those nodes.
 - **A dedicated skybox service** (Blockade Labs Skybox AI at authoring time), with its own export.
