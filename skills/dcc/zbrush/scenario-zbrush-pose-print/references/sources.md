@@ -133,6 +133,6 @@ project's `notes/posing/` and `notes/3d-print/`; the batch digest is
 
 ## Sister skills named in handoffs
 
-- scenario-blender-rigging (Blender Expert Skills team): numeric bone posing with automatic weights
+- doestaxx-blender-rigging (Blender Expert Skills team): numeric bone posing with automatic weights
   for route A.
 - scenario-maya-expert: the same round trip through Maya if the studio pipeline is Maya.

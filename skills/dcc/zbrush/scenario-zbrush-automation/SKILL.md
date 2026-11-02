@@ -158,7 +158,7 @@ own `ZResources/DXFStar.GoZ` byte for byte. Live suite: `tests/code/zbrush-autom
   (names, units, which SubTool each updates). Names are checked with `zb_goz.check_names` before
   import.
 - **To scenario-maya-pipeline-scripting, scenario-zbrush-retopology-export,
-  scenario-blender-uv-baking:** low OBJ with UVs, tangent normal PNG (flip V and green stated),
+  doestaxx-blender-uv-baking:** low OBJ with UVs, tangent normal PNG (flip V and green stated),
   decimated preview, audit numbers, Export Scale and axis notes.
 - **To a human or computer-use agent:** anything behind a dialog (FBX options, SubTool Rename and
   New Folder prompts, End Macro save dialog, GoZ app chooser, reprojection prompt).

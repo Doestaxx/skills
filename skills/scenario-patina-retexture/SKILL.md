@@ -20,7 +20,7 @@ locally to present the 3D deliverable, never generated on Scenario, so the skill
 PATINA is Patina AI's material family on Scenario (tag `sc:texture`). This skill runs PATINA
 Material, the prompt-to-material member; the flat-texture members (Image to Maps, Material Extract)
 belong to `scenario-textures`. Repainting a whole mesh with a 3D-to-3D texturing model is the
-`scenario-3d` lane; this one keeps per-material control and editable Blender shaders. The agent's
+`doestaxx-3d` lane; this one keeps per-material control and editable Blender shaders. The agent's
 own steps stay on MCP; the bundled scripts (Blender 4.2 or newer, Python 3 with Pillow and numpy,
 ffmpeg) do the local repetition and never call Scenario. Connection and the core loop: the
 `scenario` skill. If a sibling skill named here is missing from your available skills, load it with

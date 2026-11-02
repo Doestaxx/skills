@@ -178,7 +178,7 @@ a versioned ZTL at every gate.
 ## Handoffs
 
 - **Receives:** from scenario-zbrush-expert a session, brief and versioned ZTL; from
-  scenario-zbrush-retopology-export a cleaned AI or scan mesh (scenario-3d meshes arrive this way);
+  scenario-zbrush-retopology-export a cleaned AI or scan mesh (doestaxx-3d meshes arrive this way);
   from domain skills proportions and the forms list.
 - **Delivers** the P14 package (versioned ZTL, `stats()`, last sheet, forms as JSON, calibration,
   gate): realistic S3 or S4 forms on levels to scenario-zbrush-character-creature; shape-language

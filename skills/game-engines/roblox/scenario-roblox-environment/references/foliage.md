@@ -3,7 +3,7 @@
 Dress a finished blockout with rocks, bushes and trees by script. Plant them on terrain and on
 ground parts with rays, reuse a few meshes, and choose collision and level of detail per variant.
 The kit module is [`Scatter`](../scripts/agentkit/environment/Scatter.luau). Meshes come from
-scenario-3d through scenario-roblox-assets; this page places them.
+doestaxx-3d through scenario-roblox-assets; this page places them.
 
 **Test status:** `Scatter.plan` and `Scatter.place` passed 7 Lune tests offline (O1, 2026-10-19),
 with a ground function standing in for the ray. `Scatter.ray`, Model templates (`ScaleTo`,

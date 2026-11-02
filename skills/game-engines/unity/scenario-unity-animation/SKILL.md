@@ -172,8 +172,8 @@ reads): `references/procedures.md`.
 
 ## Handoffs
 
-- **Receives:** character FBX and clips from scenario-blender-export, scenario-maya-expert or
-  scenario-3d; input actions from scenario-unity-architecture; locomotion speeds, NavMesh agents and
+- **Receives:** character FBX and clips from doestaxx-blender-export, scenario-maya-expert or
+  doestaxx-3d; input actions from scenario-unity-architecture; locomotion speeds, NavMesh agents and
   gameplay events from scenario-unity-gameplay; import-pipeline conventions from
   scenario-unity-pipeline-automation.
 - **Delivers:** to scenario-unity-gameplay the controller, parameter contract (Speed m/s, TurnRate

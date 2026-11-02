@@ -162,7 +162,7 @@ a versioned ZTL after every stage: there is no undo control.
   skill's map batch.
 - **Delivers to the user:** the beauty renders, gray and albedo sheets, passes and composite, the
   turntable MP4 or GIF, the portfolio sheet and the ZTL path, with what was verified.
-- **Sister teams:** scenario-blender-texturing-shading and scenario-maya-expert for lookdev with
+- **Sister teams:** doestaxx-blender-texturing-shading and scenario-maya-expert for lookdev with
   vertex color or maps; scenario-zbrush-automation for batch renders.
 
 ## ZBrush 2026 notes

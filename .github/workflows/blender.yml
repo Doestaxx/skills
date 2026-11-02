@@ -1,6 +1,6 @@
 name: Blender toolkit
 
-# Runs tests/scenario-blender-expert against a real Blender on Linux. Without
+# Runs tests/doestaxx-blender-expert against a real Blender on Linux. Without
 # Blender its live suites skip, so the CI workflow's script-tests job never runs
 # them. Only Blender script or test changes trigger it: the download is about
 # 380 MB, and docs changes cannot break the toolkit.
@@ -8,13 +8,13 @@ on:
   pull_request:
     paths:
       - "skills/dcc/blender/*/scripts/**"
-      - "tests/scenario-blender-expert/**"
+      - "tests/doestaxx-blender-expert/**"
       - ".github/workflows/blender.yml"
   push:
     branches: [main]
     paths:
       - "skills/dcc/blender/*/scripts/**"
-      - "tests/scenario-blender-expert/**"
+      - "tests/doestaxx-blender-expert/**"
       - ".github/workflows/blender.yml"
   workflow_dispatch:
 
@@ -54,7 +54,7 @@ jobs:
       - name: Toolkit tests
         run: |
           set -o pipefail
-          pip install --require-hashes --only-binary=:all: -r tests/scenario-blender-expert/requirements-ci.txt
-          python -B -m unittest discover -s tests/scenario-blender-expert -v 2>&1 | tee tests.log
+          pip install --require-hashes --only-binary=:all: -r tests/doestaxx-blender-expert/requirements-ci.txt
+          python -B -m unittest discover -s tests/doestaxx-blender-expert -v 2>&1 | tee tests.log
           # A live suite that skips here means Blender did not start: fail instead.
           if grep -q "skipped 'Blender is not installed'" tests.log; then exit 1; fi

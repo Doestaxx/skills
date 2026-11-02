@@ -41,7 +41,7 @@ Reference parameters are arrays even for one asset. Prompt tags bind by array or
 and what it leaves alone ("@image1 defines the bottle and label, nothing of the set"), for video and
 audio tags as much as for images. A 3D blockout playblast as `@video1` passes on every limb that
 moves in it, so a stepped or rigged walk comes back stiff or sliding. Legless capsule stand-ins
-(scenario-blender-blockout builds them), with a sentence saying they only mark position, height and
+(doestaxx-blender-blockout builds them), with a sentence saying they only mark position, height and
 pace, let the model invent the gait. No seed, mask, or camera parameter exists: camera moves live in
 the prompt, one dominant move and one action per shot. Several actions go as timecoded beats ("0-2s
 ... 2-4s ..."), one per beat, the last ending inside `duration`, the shot named as one continuous

@@ -118,7 +118,7 @@ nets, gate). Not yet run in ZBrush (88 offline tests pass; live tests in
    `set_export_switches(quads=True, uvs=True, groups=False)`;
    `export_subtools(dir, level="lowest")`. FBX: ZScript could not suppress its options window,
    Python is unverified (Maxon forum), AppleScript System Events clicks ZBrush dialogs on this Mac
-   [verify for it]; default: OBJ, converted by scenario-maya-expert or scenario-blender-expert.
+   [verify for it]; default: OBJ, converted by scenario-maya-expert or doestaxx-blender-expert.
    GATE: `obj_header` reads the Export Scale back from `#Auto scale` (written by 2026.2.1, lead v03
    export); `scale_report` passes (1 percent, feet at 0, centered).
 9. **Handoff.** `handoff_report(json, ...)`: meshes, maps, unit, axis, Mid and scale, normal
@@ -126,14 +126,14 @@ nets, gate). Not yet run in ZBrush (88 offline tests pass; live tests in
 
 ### Generated or scanned mesh (Z6)
 
-1. GLB from scenario-3d: `glb_to_obj`, `triage_ai_mesh(obj, expected_parts)`, then
+1. GLB from doestaxx-3d: `glb_to_obj`, `triage_ai_mesh(obj, expected_parts)`, then
    `orient_for_import`: it rotates only a Z-up hint, centers only an off-center mesh (glTF is Y-up)
    and names the file to import.
 2. `import_mesh` (Weld; Tri2Quad rebuilds quads from AI triangles [verify range]); raw ZTL;
    `duplicate_keep()`: the copy is the form and color source, tracked by name (`index_of`), since
    splits and merges renumber SubTools.
 3. `fix_mesh`; `split_parts`, `hide_small_parts(protect_names=[raw])`. Fused parts of different
-   colors: `color_to_groups`, Groups Split [added]; else scenario-3d segmentation or human
+   colors: `color_to_groups`, Groups Split [added]; else doestaxx-3d segmentation or human
    SliceCurve cuts.
 4. `close_holes` per part. Swiss cheese after DynaMesh means too thin: thicken first.
 5. `merge_down_run` the parts of one body inside the Tool (Drust 00:09:27).
@@ -166,7 +166,7 @@ nets, gate). Not yet run in ZBrush (88 offline tests pass; live tests in
 | Maya + Arnold     | OBJ level 1, Qud, Txr, Grp off; cm                            | 32-bit EXR, Mid 0.5 = Scalar Zero Value, Catmull-Clark about 3, Auto Bump | tangent, OpenGL [added]                            |
 | Unreal, Unity     | triangulated, FBX via Maya or Blender; cm, meters [added]     | none                                                                      | engine tangent basis; Unreal DirectX green [added] |
 | Substance Painter | Substance Bridge Low & High, Auto-Bake, Force Auto-Unwrap off | none                                                                      | baked by Painter                                   |
-| Blender           | OBJ; meters                                                   | 32-bit EXR, Midlevel = Mid [added]                                        | OpenGL; game bakes with scenario-blender-uv-baking |
+| Blender           | OBJ; meters                                                   | 32-bit EXR, Midlevel = Mid [added]                                        | OpenGL; game bakes with doestaxx-blender-uv-baking |
 
 Redshift, vector displacement and full rows: `rx.RENDERERS`, `references/procedures.md`.
 
@@ -200,10 +200,10 @@ Redshift, vector displacement and full rows: `rx.RENDERERS`, `references/procedu
 
 - **Receives** from scenario-zbrush-sculpting, scenario-zbrush-character-creature,
   scenario-zbrush-stylized, scenario-zbrush-hard-surface: a versioned ZTL with named SubTools,
-  `stats()` and the last sheet; from scenario-3d: GLB or OBJ.
+  `stats()` and the last sheet; from doestaxx-3d: GLB or OBJ.
 - **Delivers** to scenario-maya-retopology-uv and scenario-maya-rigging: level-1 OBJ per SubTool,
   cm, Y-up, centered, feet at 0, eyes separate; to scenario-maya-lookdev: maps plus
-  `handoff_report`; to scenario-blender-uv-baking or Substance: low and decimated high with matching
+  `handoff_report`; to doestaxx-blender-uv-baking or Substance: low and decimated high with matching
   names; to scenario-zbrush-paint-render: the stack with UVs; to scenario-zbrush-pose-print: a
   closed copy.
 

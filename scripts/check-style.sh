@@ -102,7 +102,7 @@ fi
 # read it as an untrusted source. Siblings load through skill_get instead.
 # Family READMEs sit outside every skill folder, so no install ships them.
 grep_status=0
-install_hits=$(grep -rnE -e 'skills(@[^ ]*)? add +scenario-labs/skills' skills) || grep_status=$?
+install_hits=$(grep -rniE -e 'skills(@[^ ]*)? add +(scenario-labs|doestaxx)/skills' skills) || grep_status=$?
 if [ "$grep_status" -ge 2 ]; then
   echo "check-style: grep failed (exit $grep_status); a checked path is probably missing"
   fail=1
@@ -174,7 +174,7 @@ for f in $skill_files; do
   name=$(basename "$(dirname "$f")")
   body=$(awk 'BEGIN { fm = 0 } /^---$/ { fm++; next } fm >= 2 { print }' "$f")
   total=$(skill_tokens "$name")
-  siblings=$(printf '%s\n' "$body" | grep -oE '`scenario(-[a-z0-9]+)*`' | tr -d '`' | sort -u | grep -vx "$name" || true)
+  siblings=$(printf '%s\n' "$body" | grep -oE '`(scenario|doestaxx)(-[a-z0-9]+)*`' | tr -d '`' | sort -u | grep -vx "$name" || true)
   count=0
   for sibling in $siblings; do
     sibling_tokens=$(skill_tokens "$sibling")

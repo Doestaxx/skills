@@ -37,11 +37,11 @@ the execution channel (batch `mayapy` or a live Maya over the bridge).
 ## Install
 
 ```bash
-npx skills add scenario-labs/skills --skill scenario-maya-expert scenario-maya-animation scenario-maya-deformation scenario-maya-fx scenario-maya-groom scenario-maya-lighting-rendering scenario-maya-lookdev scenario-maya-modeling scenario-maya-pipeline-scripting scenario-maya-retopology-uv scenario-maya-rigging
+npx skills add Doestaxx/skills --skill scenario-maya-expert scenario-maya-animation scenario-maya-deformation scenario-maya-fx scenario-maya-groom scenario-maya-lighting-rendering scenario-maya-lookdev scenario-maya-modeling scenario-maya-pipeline-scripting scenario-maya-retopology-uv scenario-maya-rigging
 ```
 
 The installer puts the skills side by side, which the specialists need: they import the lead skill's
-`scripts/`. In the installer picker (`npx skills add scenario-labs/skills`), the family is the
+`scripts/`. In the installer picker (`npx skills add Doestaxx/skills`), the family is the
 "Expert tools: Maya" group. Update with `npx skills update`.
 
 ## Provenance

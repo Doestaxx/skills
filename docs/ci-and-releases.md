@@ -64,8 +64,8 @@ which commit types release and which files release-please owns.
 
   ```bash
   uv pip compile --generate-hashes --python-version 3.12 --python-platform linux \
-    tests/scenario-blender-expert/requirements.txt \
-    -o tests/scenario-blender-expert/requirements-ci.txt
+    tests/doestaxx-blender-expert/requirements.txt \
+    -o tests/doestaxx-blender-expert/requirements-ci.txt
   ```
 
   Add `--upgrade-package <name>` when updating a locked package without changing its requirement.

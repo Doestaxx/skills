@@ -8,17 +8,17 @@
   <h1>
     Scenario Agent Skills
   </h1>
-  <a href="https://skills.sh/scenario-labs/skills">
-    <img alt="skills.sh" src="https://skills.sh/b/scenario-labs/skills" />
+  <a href="https://skills.sh/Doestaxx/skills">
+    <img alt="skills.sh" src="https://skills.sh/b/Doestaxx/skills" />
   </a>
-  <a href="https://github.com/scenario-labs/skills/releases">
-    <img alt="Latest release" src="https://img.shields.io/github/v/release/scenario-labs/skills" />
+  <a href="https://github.com/Doestaxx/skills/releases">
+    <img alt="Latest release" src="https://img.shields.io/github/v/release/Doestaxx/skills" />
   </a>
-  <a href="https://github.com/scenario-labs/skills/actions/workflows/ci.yml">
-    <img alt="CI" src="https://github.com/scenario-labs/skills/actions/workflows/ci.yml/badge.svg?branch=main" />
+  <a href="https://github.com/Doestaxx/skills/actions/workflows/ci.yml">
+    <img alt="CI" src="https://github.com/Doestaxx/skills/actions/workflows/ci.yml/badge.svg?branch=main" />
   </a>
-  <a href="https://scorecard.dev/viewer/?uri=github.com/scenario-labs/skills">
-    <img alt="OpenSSF Scorecard" src="https://img.shields.io/ossf-scorecard/github.com/scenario-labs/skills?label=openssf+scorecard&style=flat" />
+  <a href="https://scorecard.dev/viewer/?uri=github.com/Doestaxx/skills">
+    <img alt="OpenSSF Scorecard" src="https://img.shields.io/ossf-scorecard/github.com/Doestaxx/skills?label=openssf+scorecard&style=flat" />
   </a>
   <a href="LICENSE">
     <img alt="License MIT" src="https://img.shields.io/badge/license-MIT-blue" />
@@ -59,7 +59,7 @@ through the Scenario MCP.
 
 ```bash
 # Every Scenario skill, without the expert tools
-npx skills add scenario-labs/skills --skill scenario scenario-inspiration scenario-image scenario-multi-reference scenario-product-shots scenario-brand-kit scenario-image-editing scenario-text-overlay scenario-storyboards scenario-game-assets scenario-sprite-animation scenario-side-view-game-kit scenario-blender-2d-animation scenario-textures scenario-skyboxes scenario-3d scenario-video-to-motion scenario-blender scenario-patina-retexture scenario-orbit-views scenario-walkable-room scenario-video scenario-video-editing scenario-video-color-grade scenario-seedance-music-video scenario-kinetic-music-video scenario-chatgpt-pet-create scenario-chatgpt-pet-update scenario-seedance-storyboard scenario-seedance-drafts scenario-video-ads scenario-ugc scenario-fan-cam scenario-reel-recast scenario-audio scenario-video-assembly scenario-motion-loops scenario-caption-studio scenario-consistency scenario-identity-library scenario-model-training scenario-asset-analysis scenario-quality-gate scenario-refine-loop scenario-model-comparison scenario-formats scenario-workflows scenario-workflow-authoring scenario-moderation scenario-report scenario-team-admin scenario-admin-analytics scenario-gpt-image scenario-mai-image scenario-seedream scenario-gemini-image scenario-reve scenario-ideogram scenario-grok-imagine-image scenario-luma-image scenario-minimax-video scenario-gemini-omni scenario-grok-imagine-video scenario-veo scenario-seedance scenario-kling scenario-vidu scenario-wan scenario-runway scenario-luma-video scenario-minimax-music scenario-elevenlabs scenario-ace-step scenario-sonilo scenario-meshy scenario-rodin scenario-sparc3d scenario-3d-worlds scenario-ad-variants scenario-thumbnails
+npx skills add Doestaxx/skills --skill doestaxx scenario-inspiration scenario-image scenario-multi-reference scenario-product-shots scenario-brand-kit scenario-image-editing scenario-text-overlay scenario-storyboards scenario-game-assets scenario-sprite-animation scenario-side-view-game-kit scenario-blender-2d-animation scenario-textures doestaxx-skyboxes doestaxx-3d scenario-video-to-motion doestaxx-blender scenario-patina-retexture scenario-orbit-views doestaxx-walkable-room scenario-video scenario-video-editing scenario-video-color-grade scenario-seedance-music-video scenario-kinetic-music-video scenario-chatgpt-pet-create scenario-chatgpt-pet-update scenario-seedance-storyboard scenario-seedance-drafts scenario-video-ads scenario-ugc scenario-fan-cam scenario-reel-recast scenario-audio scenario-video-assembly scenario-motion-loops scenario-caption-studio scenario-consistency scenario-identity-library scenario-model-training scenario-asset-analysis scenario-quality-gate scenario-refine-loop scenario-model-comparison scenario-formats doestaxx-workflows doestaxx-workflow-authoring scenario-moderation scenario-report scenario-team-admin scenario-admin-analytics scenario-gpt-image scenario-mai-image scenario-seedream scenario-gemini-image scenario-reve scenario-ideogram scenario-grok-imagine-image scenario-luma-image scenario-minimax-video scenario-gemini-omni scenario-grok-imagine-video scenario-veo scenario-seedance scenario-kling scenario-vidu scenario-wan scenario-runway scenario-luma-video scenario-minimax-music scenario-elevenlabs scenario-ace-step scenario-sonilo scenario-meshy scenario-rodin scenario-sparc3d doestaxx-3d-worlds scenario-ad-variants scenario-thumbnails
 ```
 
 **By role or goal.** [INSTALL.md](INSTALL.md) groups the skills by job, from 2D artist to producer,
@@ -76,10 +76,10 @@ README ([ZBrush](skills/dcc/zbrush/README.md), [Blender](skills/dcc/blender/READ
 
 ```bash
 # Pick from the installer menu, grouped by topic (it opens with nothing preselected: select before pressing enter)
-npx skills add scenario-labs/skills
+npx skills add Doestaxx/skills
 
 # A single skill
-npx skills add scenario-labs/skills --skill scenario
+npx skills add Doestaxx/skills --skill doestaxx
 ```
 
 **Pin a reviewed release.** The commands above fetch the latest copy of each skill from `main`. To
@@ -87,7 +87,7 @@ install a reviewed state instead, pin both the installer and the commit, taken f
 Run it again with a newer commit to move.
 
 ```bash
-npx skills@1.7.4 add scenario-labs/skills#<commit> --skill <name>
+npx skills@1.7.4 add Doestaxx/skills#<commit> --skill <name>
 ```
 
 The menu's topic groups cannot be selected from the command line: the CLI matches `--skill` against
@@ -105,12 +105,24 @@ Or add `https://mcp.scenario.com/mcp` to any MCP client and sign in with a Scena
 or use an [API key](https://app.scenario.com/settings/api). Full setup lives in the `scenario`
 skill.
 
+### Use it in Claude
+
+The Doestaxx Studio plugin bundles every converted skill.
+
+- **Claude chat or Cowork**: Customize, Plugins, Add, Add marketplace, Add from a repository, then
+  `Doestaxx/skills`, and turn on `doestaxx-studio`. Or upload the zip that
+  `python3 scripts/package_studio_plugin.py` writes to `dist/`.
+- **Claude Code**: `/plugin marketplace add Doestaxx/skills`, then
+  `/plugin install doestaxx-studio@doestaxx-skills`.
+- Connect the Higgsfield connector for generation. fal.ai and direct model APIs need their keys in
+  the environment of a shell (Claude Code or Cowork); chat uses connectors only.
+
 ## Staying up to date
 
 Releases are how changes become visible: every feature, fix, and documentation change merged to
 `main` lands in the next release, staged by release-please as an open release PR. Merging that PR
 tags a version, updates `CHANGELOG.md` in this repository, publishes a
-[GitHub release](https://github.com/scenario-labs/skills/releases), and posts the notes to the
+[GitHub release](https://github.com/Doestaxx/skills/releases), and posts the notes to the
 [Scenario changelog](https://www.scenario.com/changelog).
 
 - To learn that a skill changed, watch this repository's releases (Watch, then Custom, then Releases
@@ -124,11 +136,12 @@ tags a version, updates `CHANGELOG.md` in this repository, publishes a
 
 ### Getting started
 
-Connect the Scenario MCP server and learn the core generation loop every other skill builds on.
+Pick the provider for each job (Higgsfield, fal.ai, direct model APIs, ComfyUI) and learn the loop
+every other skill builds on.
 
-| Skill                                | Use it for                                                                                                  |
-| ------------------------------------ | ----------------------------------------------------------------------------------------------------------- |
-| [scenario](skills/scenario/SKILL.md) | Connecting to the Scenario MCP and the core generation loop: discover, schema, run, wait, display, download |
+| Skill                                | Use it for                                                                                                   |
+| ------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| [doestaxx](skills/doestaxx/SKILL.md) | Provider routing across Higgsfield, fal.ai, direct model APIs, and ComfyUI; pricing, waiting, file hand-offs |
 
 ### Finding a direction
 
@@ -167,13 +180,13 @@ interactive scenes.
 | [scenario-side-view-game-kit](skills/scenario-side-view-game-kit/SKILL.md)     | Side-scroller and platformer art: side-view pixel sprite strips for a hero and enemies (run, walk, attack, hurt, poses), parallax layers, seamless wall texture, platform strip, props                                                                                                            |
 | [scenario-blender-2d-animation](skills/scenario-blender-2d-animation/SKILL.md) | A side-scroller shot animated in Blender from Scenario pictures: a concept frame that locks the look, parallax layers, props and a hero run cycle on its reference, flat image cards with an orthographic camera, keyed jumps and rigid-body props, and a whole new look by swapping the pictures |
 | [scenario-textures](skills/scenario-textures/SKILL.md)                         | Seamless and tileable textures, PBR materials, tiling-safe upscaling, engine-ready sizing                                                                                                                                                                                                         |
-| [scenario-skyboxes](skills/scenario-skyboxes/SKILL.md)                         | 360 equirectangular panoramas and skyboxes, seam-safe upscaling, engine export                                                                                                                                                                                                                    |
-| [scenario-3d](skills/scenario-3d/SKILL.md)                                     | Text or image to 3D meshes, multi-view reconstruction, retexture and remesh, inline 3D preview, GLB/FBX download                                                                                                                                                                                  |
+| [doestaxx-skyboxes](skills/doestaxx-skyboxes/SKILL.md)                         | 360 panoramas built from 2:1 image generation: seam repair, pole handling, upscale, cubemap export, other routes                                                                                                                                                                                  |
+| [doestaxx-3d](skills/doestaxx-3d/SKILL.md)                                     | Text, image, or multi-view to GLB meshes on Higgsfield, rigging, remesh, retexture, local GLB checks                                                                                                                                                                                              |
 | [scenario-video-to-motion](skills/scenario-video-to-motion/SKILL.md)           | Motion capture from a reference or generated video: an uploaded character auto-rigged and animated, or motion alone on a Mixamo or MetaHuman skeleton, with in-place, looping, and engine-ready exports                                                                                           |
-| [scenario-blender](skills/scenario-blender/SKILL.md)                           | Drive an open Blender scene through the Scenario for Blender extension's local MCP server: read the scene, quote and run generations, capture viewport references, place results, plan camera paths                                                                                               |
+| [doestaxx-blender](skills/doestaxx-blender/SKILL.md)                           | Drive an open Blender scene through the Scenario for Blender extension's local MCP server: read the scene, quote and run generations, capture viewport references, place results, plan camera paths                                                                                               |
 | [scenario-patina-retexture](skills/scenario-patina-retexture/SKILL.md)         | PATINA PBR retexture of a finished mesh: material families, one map set per family, Blender apply with geometry untouched, matched before/after comparison film                                                                                                                                   |
 | [scenario-orbit-views](skills/scenario-orbit-views/SKILL.md)                   | New camera angles of one picture through a 3D intermediary: clay layouts in a grounded panorama, repaint per camera, matched transparent set                                                                                                                                                      |
-| [scenario-walkable-room](skills/scenario-walkable-room/SKILL.md)               | A room from one interior photo to walk into: clean plate, splat world, PBR props with impact sounds, splat-based calibration, physics viewer with grab and throw                                                                                                                                  |
+| [doestaxx-walkable-room](skills/doestaxx-walkable-room/SKILL.md)               | A room from one interior photo to walk into: clean plate, splat or mesh room, PBR props, physics viewer                                                                                                                                                                                           |
 
 ### Video and audio
 
@@ -246,10 +259,10 @@ from social feeds to shops, storefronts, and print.
 Discover, run, build, and publish Scenario workflows (apps), and migrate graphs from Weavy, ComfyUI,
 or other node editors.
 
-| Skill                                                                      | Use it for                                                                                                                                               |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [scenario-workflows](skills/scenario-workflows/SKILL.md)                   | Running saved workflows (apps): building the run inputs, dry-run pricing, unsticking approval gates                                                      |
-| [scenario-workflow-authoring](skills/scenario-workflow-authoring/SKILL.md) | Creating and editing workflow graphs: editor_info grammar, node wiring, publishing apps, and migrating graphs from Weavy, ComfyUI, or other node editors |
+| Skill                                                                      | Use it for                                                                                           |
+| -------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| [doestaxx-workflows](skills/doestaxx-workflows/SKILL.md)                   | Running ComfyUI node graphs over its HTTP API, passing media to and from Higgsfield, other routes    |
+| [doestaxx-workflow-authoring](skills/doestaxx-workflow-authoring/SKILL.md) | Authoring and editing ComfyUI API-format graphs, node discovery, UI-to-API conversion, graph imports |
 
 ### Troubleshooting
 
@@ -321,12 +334,12 @@ scoring.
 The top 3D families in depth: mesh generation, retexture and rigging toolchains, portraits, and
 explorable worlds and splats.
 
-| Skill                                                    | Use it for                                                                                                                                                                              |
-| -------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [scenario-meshy](skills/scenario-meshy/SKILL.md)         | Meshy 3D: generate from image, multi-view, or text, then retexture, remesh, UV unwrap, rig, or animate; texture precedence, Ultra mode, polycount traps                                 |
-| [scenario-rodin](skills/scenario-rodin/SKILL.md)         | Rodin 3D: member selection (image-to-3D, text-to-3D, Fast lanes, Bang! mesh splitting), full versus Fast parameter dialects, topology and tier traps, cost                              |
-| [scenario-sparc3d](skills/scenario-sparc3d/SKILL.md)     | Sparc3D image-to-3D: ordered multi-view input, mesh vs textured output, per-member resolution spellings, face budgets, long-job waits                                                   |
-| [scenario-3d-worlds](skills/scenario-3d-worlds/SKILL.md) | 3D worlds and splats: member choice by input (text, image, pano, multi-view, video, object), Marble draft-then-upgrade seed reuse, HY World skybox-to-splat pipeline, long-job patience |
+| Skill                                                    | Use it for                                                                                                                                                 |
+| -------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [scenario-meshy](skills/scenario-meshy/SKILL.md)         | Meshy 3D: generate from image, multi-view, or text, then retexture, remesh, UV unwrap, rig, or animate; texture precedence, Ultra mode, polycount traps    |
+| [scenario-rodin](skills/scenario-rodin/SKILL.md)         | Rodin 3D: member selection (image-to-3D, text-to-3D, Fast lanes, Bang! mesh splitting), full versus Fast parameter dialects, topology and tier traps, cost |
+| [scenario-sparc3d](skills/scenario-sparc3d/SKILL.md)     | Sparc3D image-to-3D: ordered multi-view input, mesh vs textured output, per-member resolution spellings, face budgets, long-job waits                      |
+| [doestaxx-3d-worlds](skills/doestaxx-3d-worlds/SKILL.md) | Explorable 3D scenes on hosted 3D Jutsu from an image, honest limits versus splats, external splat routes                                                  |
 
 ### Expert tools: ZBrush
 
@@ -356,21 +369,21 @@ game engines. Twelve test suites pass headless on Blender 5.2.1.
 
 | Skill                                                                                                  | Use it for                                                                                                                                                     |
 | ------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [scenario-blender-expert](skills/dcc/blender/scenario-blender-expert/SKILL.md)                         | Blender lead: Python headless or through a live MCP bridge, the expert review loop, the shared review and mesh-audit toolkit, Blender 5.2 API traps            |
-| [scenario-blender-animation](skills/dcc/blender/scenario-blender-animation/SKILL.md)                   | Blender animation: cycles, jumps, acting and lip sync, stepped blocking to spline and polish, timing and spacing, graph editor, slotted actions and NLA        |
-| [scenario-blender-blockout](skills/dcc/blender/scenario-blender-blockout/SKILL.md)                     | Blockouts that guide render-to-real video: color-coded proxies at metric scale, cameras locked to the timeline, framing audits, playblast and hand-off sheet   |
-| [scenario-blender-export](skills/dcc/blender/scenario-blender-export/SKILL.md)                         | Exports for game engines: FBX, GLB, USDZ and STL presets for Unity, Unreal, Godot, Roblox, three.js, round-trip checks, LODs, collision, batch                 |
-| [scenario-blender-geometry-nodes](skills/dcc/blender/scenario-blender-geometry-nodes/SKILL.md)         | Geometry Nodes: procedural modeling, scattering, curves and loops, simulation zones, 5.2 physics, closures and bundles, node-group assets                      |
-| [scenario-blender-grease-pencil](skills/dcc/blender/scenario-blender-grease-pencil/SKILL.md)           | Grease Pencil in Blender 5.x: 2D and 2.5D illustration, frame-by-frame and cutout animation, fills, interpolation, Line Art, strokes on meshes                 |
-| [scenario-blender-hair](skills/dcc/blender/scenario-blender-hair/SKILL.md)                             | Hair and fur with hair curves: hairstyles, animal fur, Essentials hair nodes, density masks and partings, hair cards and mesh hair for games                   |
-| [scenario-blender-hard-surface](skills/dcc/blender/scenario-blender-hard-surface/SKILL.md)             | Hard surface in Blender: booleans and cutters, bevels, weighted normals, support loops and creases, fixing smeared or pinched shading                          |
-| [scenario-blender-lighting-rendering](skills/dcc/blender/scenario-blender-lighting-rendering/SKILL.md) | Blender lighting and rendering: motivated and three-point setups, HDRI and sun, EEVEE vs Cycles, noise and leaks, AgX color management, passes and compositing |
-| [scenario-blender-previs-storyboard](skills/dcc/blender/scenario-blender-previs-storyboard/SKILL.md)   | Script to previs in Blender: beats to shot list, cameras and lenses, staging and screen direction, cuts and camera moves, storyboards and animatics            |
-| [scenario-blender-retopology](skills/dcc/blender/scenario-blender-retopology/SKILL.md)                 | Retopology in Blender: dense sculpt, scan, or AI mesh to clean topology for animation, subdivision, or a game low poly, loop and pole placement                |
-| [scenario-blender-rigging](skills/dcc/blender/scenario-blender-rigging/SKILL.md)                       | Rigging in Blender: Rigify metarigs, automatic weights and weight fixes, IK/FK, foot roll, twist bones, drivers and custom properties                          |
-| [scenario-blender-sculpting](skills/dcc/blender/scenario-blender-sculpting/SKILL.md)                   | Sculpting heads and characters in Blender: blockout from primitives, planes and landmarks, stylized and realistic faces, remesh or multires resolution         |
-| [scenario-blender-texturing-shading](skills/dcc/blender/scenario-blender-texturing-shading/SKILL.md)   | Texturing and shading in Blender: PBR from texture sets, procedural materials, wear and grime, triplanar mapping, skin and eyes, stylized looks                |
-| [scenario-blender-uv-baking](skills/dcc/blender/scenario-blender-uv-baking/SKILL.md)                   | UVs and baking in Blender: seams, packing, texel density, UDIMs, normal, AO, curvature, and ID bakes from high poly or Multires, fixing bad bakes              |
+| [doestaxx-blender-expert](skills/dcc/blender/doestaxx-blender-expert/SKILL.md)                         | Blender lead: Python headless or through a live MCP bridge, the expert review loop, the shared review and mesh-audit toolkit, Blender 5.2 API traps            |
+| [doestaxx-blender-animation](skills/dcc/blender/doestaxx-blender-animation/SKILL.md)                   | Blender animation: cycles, jumps, acting and lip sync, stepped blocking to spline and polish, timing and spacing, graph editor, slotted actions and NLA        |
+| [doestaxx-blender-blockout](skills/dcc/blender/doestaxx-blender-blockout/SKILL.md)                     | Blockouts that guide render-to-real video: color-coded proxies at metric scale, cameras locked to the timeline, framing audits, playblast and hand-off sheet   |
+| [doestaxx-blender-export](skills/dcc/blender/doestaxx-blender-export/SKILL.md)                         | Exports for game engines: FBX, GLB, USDZ and STL presets for Unity, Unreal, Godot, Roblox, three.js, round-trip checks, LODs, collision, batch                 |
+| [doestaxx-blender-geometry-nodes](skills/dcc/blender/doestaxx-blender-geometry-nodes/SKILL.md)         | Geometry Nodes: procedural modeling, scattering, curves and loops, simulation zones, 5.2 physics, closures and bundles, node-group assets                      |
+| [doestaxx-blender-grease-pencil](skills/dcc/blender/doestaxx-blender-grease-pencil/SKILL.md)           | Grease Pencil in Blender 5.x: 2D and 2.5D illustration, frame-by-frame and cutout animation, fills, interpolation, Line Art, strokes on meshes                 |
+| [doestaxx-blender-hair](skills/dcc/blender/doestaxx-blender-hair/SKILL.md)                             | Hair and fur with hair curves: hairstyles, animal fur, Essentials hair nodes, density masks and partings, hair cards and mesh hair for games                   |
+| [doestaxx-blender-hard-surface](skills/dcc/blender/doestaxx-blender-hard-surface/SKILL.md)             | Hard surface in Blender: booleans and cutters, bevels, weighted normals, support loops and creases, fixing smeared or pinched shading                          |
+| [doestaxx-blender-lighting-rendering](skills/dcc/blender/doestaxx-blender-lighting-rendering/SKILL.md) | Blender lighting and rendering: motivated and three-point setups, HDRI and sun, EEVEE vs Cycles, noise and leaks, AgX color management, passes and compositing |
+| [doestaxx-blender-previs-storyboard](skills/dcc/blender/doestaxx-blender-previs-storyboard/SKILL.md)   | Script to previs in Blender: beats to shot list, cameras and lenses, staging and screen direction, cuts and camera moves, storyboards and animatics            |
+| [doestaxx-blender-retopology](skills/dcc/blender/doestaxx-blender-retopology/SKILL.md)                 | Retopology in Blender: dense sculpt, scan, or AI mesh to clean topology for animation, subdivision, or a game low poly, loop and pole placement                |
+| [doestaxx-blender-rigging](skills/dcc/blender/doestaxx-blender-rigging/SKILL.md)                       | Rigging in Blender: Rigify metarigs, automatic weights and weight fixes, IK/FK, foot roll, twist bones, drivers and custom properties                          |
+| [doestaxx-blender-sculpting](skills/dcc/blender/doestaxx-blender-sculpting/SKILL.md)                   | Sculpting heads and characters in Blender: blockout from primitives, planes and landmarks, stylized and realistic faces, remesh or multires resolution         |
+| [doestaxx-blender-texturing-shading](skills/dcc/blender/doestaxx-blender-texturing-shading/SKILL.md)   | Texturing and shading in Blender: PBR from texture sets, procedural materials, wear and grime, triplanar mapping, skin and eyes, stylized looks                |
+| [doestaxx-blender-uv-baking](skills/dcc/blender/doestaxx-blender-uv-baking/SKILL.md)                   | UVs and baking in Blender: seams, packing, texel density, UDIMs, normal, AO, curvature, and ID bakes from high poly or Multires, fixing bad bakes              |
 
 ### Expert tools: Maya
 
@@ -400,16 +413,16 @@ rendering, gameplay, animation, cinematics, VFX, pipeline automation, performanc
 
 | Skill                                                                                                          | Use it for                                                                                                                                                   |
 | -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [scenario-unreal-expert](skills/game-engines/unreal/scenario-unreal-expert/SKILL.md)                           | Unreal lead: Editor Python, headless UnrealEditor-Cmd jobs, Epic's Unreal MCP server, the Remote Control API, console commands, 5.8 traps                    |
-| [scenario-unreal-animation](skills/game-engines/unreal/scenario-unreal-animation/SKILL.md)                     | Unreal animation: skeletal import, IK Rig and Retargeter, Motion Matching and Pose Search, root motion, foot IK, Control Rig                                 |
-| [scenario-unreal-cinematics](skills/game-engines/unreal/scenario-unreal-cinematics/SKILL.md)                   | Unreal cinematics with Sequencer: shot lists, master and shot sequences, cameras and lenses, per-shot lighting, Movie Render Graph output                    |
-| [scenario-unreal-gameplay](skills/game-engines/unreal/scenario-unreal-gameplay/SKILL.md)                       | Unreal gameplay: characters and abilities, enemy AI, HUD, Blueprint vs C++, GAS, StateTree vs Behavior Tree, Enhanced Input, replication                     |
-| [scenario-unreal-lighting-rendering](skills/game-engines/unreal/scenario-unreal-lighting-rendering/SKILL.md)   | Unreal lighting and rendering: physical units and exposure, Lumen, MegaLights, virtual shadow maps, sky and fog, post process, path tracer                   |
-| [scenario-unreal-materials](skills/game-engines/unreal/scenario-unreal-materials/SKILL.md)                     | Unreal materials: master materials and instances, Substrate, glass and emissives, decals, landscape layers and RVT, toon shading, shader permutations        |
-| [scenario-unreal-performance](skills/game-engines/unreal/scenario-unreal-performance/SKILL.md)                 | Unreal performance: frame budgets, CPU vs GPU bound, hitches and PSO stutter, GC spikes, Lumen, Nanite, VSM, and Niagara cost, profiling                     |
-| [scenario-unreal-pipeline-automation](skills/game-engines/unreal/scenario-unreal-pipeline-automation/SKILL.md) | Unreal pipeline: bulk FBX, USD, OBJ, or glTF import from Maya, ZBrush, or Blender, Editor Python tools, Interchange, naming and validation, cook and package |
-| [scenario-unreal-vfx](skills/game-engines/unreal/scenario-unreal-vfx/SKILL.md)                                 | Unreal VFX: Niagara systems (fireballs, trails, impacts, smoke, sparks), Niagara fluids, scalability and pooling, Chaos destruction                          |
-| [scenario-unreal-world-building](skills/game-engines/unreal/scenario-unreal-world-building/SKILL.md)           | Unreal levels and open worlds: World Partition, Data Layers, Level Instances, HLOD, landscape, foliage, PCG scatter, Nanite                                  |
+| [doestaxx-unreal-expert](skills/game-engines/unreal/doestaxx-unreal-expert/SKILL.md)                           | Unreal lead: Editor Python, headless UnrealEditor-Cmd jobs, Epic's Unreal MCP server, the Remote Control API, console commands, 5.8 traps                    |
+| [doestaxx-unreal-animation](skills/game-engines/unreal/doestaxx-unreal-animation/SKILL.md)                     | Unreal animation: skeletal import, IK Rig and Retargeter, Motion Matching and Pose Search, root motion, foot IK, Control Rig                                 |
+| [doestaxx-unreal-cinematics](skills/game-engines/unreal/doestaxx-unreal-cinematics/SKILL.md)                   | Unreal cinematics with Sequencer: shot lists, master and shot sequences, cameras and lenses, per-shot lighting, Movie Render Graph output                    |
+| [doestaxx-unreal-gameplay](skills/game-engines/unreal/doestaxx-unreal-gameplay/SKILL.md)                       | Unreal gameplay: characters and abilities, enemy AI, HUD, Blueprint vs C++, GAS, StateTree vs Behavior Tree, Enhanced Input, replication                     |
+| [doestaxx-unreal-lighting-rendering](skills/game-engines/unreal/doestaxx-unreal-lighting-rendering/SKILL.md)   | Unreal lighting and rendering: physical units and exposure, Lumen, MegaLights, virtual shadow maps, sky and fog, post process, path tracer                   |
+| [doestaxx-unreal-materials](skills/game-engines/unreal/doestaxx-unreal-materials/SKILL.md)                     | Unreal materials: master materials and instances, Substrate, glass and emissives, decals, landscape layers and RVT, toon shading, shader permutations        |
+| [doestaxx-unreal-performance](skills/game-engines/unreal/doestaxx-unreal-performance/SKILL.md)                 | Unreal performance: frame budgets, CPU vs GPU bound, hitches and PSO stutter, GC spikes, Lumen, Nanite, VSM, and Niagara cost, profiling                     |
+| [doestaxx-unreal-pipeline-automation](skills/game-engines/unreal/doestaxx-unreal-pipeline-automation/SKILL.md) | Unreal pipeline: bulk FBX, USD, OBJ, or glTF import from Maya, ZBrush, or Blender, Editor Python tools, Interchange, naming and validation, cook and package |
+| [doestaxx-unreal-vfx](skills/game-engines/unreal/doestaxx-unreal-vfx/SKILL.md)                                 | Unreal VFX: Niagara systems (fireballs, trails, impacts, smoke, sparks), Niagara fluids, scalability and pooling, Chaos destruction                          |
+| [doestaxx-unreal-world-building](skills/game-engines/unreal/doestaxx-unreal-world-building/SKILL.md)           | Unreal levels and open worlds: World Partition, Data Layers, Level Instances, HLOD, landscape, foliage, PCG scatter, Nanite                                  |
 
 ### Expert tools: Unity
 

@@ -143,8 +143,8 @@ Never report a model as done without having looked at a canvas render of its fin
 
 Handoffs between team skills are a versioned ZTL plus its `stats()` and last review sheet. Handoffs
 out of ZBrush are OBJ or GoZ plus maps and an audit report. Sister teams: scenario-maya-expert
-(rigging, animation, Arnold lookdev), scenario-blender-expert (retopology, lookdev, rendering, GoB
-round trips), scenario-3d (AI mesh generation to finish here).
+(rigging, animation, Arnold lookdev), doestaxx-blender-expert (retopology, lookdev, rendering, GoB
+round trips), doestaxx-3d (AI mesh generation to finish here).
 
 ## 6. Shared toolkit (`scripts/`)
 

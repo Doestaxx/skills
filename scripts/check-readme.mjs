@@ -12,7 +12,7 @@
 // - every row points at an existing skill directory with a matching label,
 //   so renames and removals cannot leave stale rows behind
 // - every row carries a non-empty "Use it for" description
-// - every `npx skills add scenario-labs/skills` command, in README.md,
+// - every `npx skills add Doestaxx/skills` command, in README.md,
 //   INSTALL.md, and the expert-tools family READMEs, passes its names after one
 //   --skill and names only existing skills; the default
 //   command (the line after "# Every Scenario skill, without the expert tools")
@@ -198,7 +198,7 @@ for (const { name, dir } of skills) {
 // Install commands. A missing or renamed skill fails the whole install, and a
 // skill added later would silently fall out of the all-in-one commands.
 const DEFAULT_MARKER = "# Every Scenario skill, without the expert tools";
-const installPattern = /^npx skills add scenario-labs\/skills\b(.*)$/;
+const installPattern = /^npx skills add Doestaxx\/skills\b(.*)$/;
 // The CLI's --skill (-s) takes every argument up to the next flag, which is how
 // the commands here pass all their names after a single --skill.
 const skillsIn = (line) => {

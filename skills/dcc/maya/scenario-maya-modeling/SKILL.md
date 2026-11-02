@@ -175,7 +175,7 @@ two-sided lighting off or backface culling. Judge with
 ## Handoffs
 
 - **Receives** the brief from scenario-maya-expert; sculpts from scenario-zbrush-expert (check
-  scale, ZBrush has no units; orientation; locked normals); generated meshes from scenario-3d
+  scale, ZBrush has no units; orientation; locked normals); generated meshes from doestaxx-3d
   (reference or bake high only).
 - **Delivers to scenario-maya-retopology-uv** (UVs, bake prep): a new version
   `<asset>_model_v###.ma`, `<asset>_GRP` with `_geo` meshes (engine names such as `SM_` and `UCX_`

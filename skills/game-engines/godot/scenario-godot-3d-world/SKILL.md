@@ -180,7 +180,7 @@ cylinder for clean wall-run and slide normals. CharacterBody3D (GDQuest, Juli) o
 - blender skills: Blender markers replaced on import (Allard 00:04:38), linked data refreshed only
   when the dependent file is saved (00:27:49), the "glTF Settings" node group for AO (FinePointCGI
   PIpCl6TYnC0 00:03:23).
-- scenario-3d: generating the GLBs. Write "Scenario MCP" in customer-facing text.
+- doestaxx-3d: generating the GLBs. Write "Scenario MCP" in customer-facing text.
 
 ## Godot 4.7 notes
 

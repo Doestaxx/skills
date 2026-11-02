@@ -190,9 +190,9 @@ with its background; no plastic or near-black materials; distance haze leaves si
 
 | To or from                               | What                                                                                                                                                                          |
 | ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| scenario-3d, then scenario-roblox-assets | Scenario meshes are imported and checked there (triangles, collision, SurfaceAppearance); this skill places them, sets fidelity and LevelOfDetail, and lights them            |
+| doestaxx-3d, then scenario-roblox-assets | Scenario meshes are imported and checked there (triangles, collision, SurfaceAppearance); this skill places them, sets fidelity and LevelOfDetail, and lights them            |
 | scenario-textures                        | tileable PBR sets become MaterialVariants here (color, normal, roughness, metalness; OpenGL normals); one-mesh texture sets go to scenario-roblox-assets as SurfaceAppearance |
-| scenario-skyboxes                        | six faces into `Sky.SkyboxBk/Dn/Ft/Lf/Rt/Up`; uploading needs the user's go; judge the sky with the look, since it colors the scene                                           |
+| doestaxx-skyboxes                        | six faces into `Sky.SkyboxBk/Dn/Ft/Lf/Rt/Up`; uploading needs the user's go; judge the sky with the look, since it colors the scene                                           |
 | scenario-game-assets                     | decals and signage placed on surfaces here; UI art goes to scenario-roblox-ui                                                                                                 |
 | scenario-roblox-performance              | streaming settings, budgets and device tests: send the P11 Stats and the EnvAudit counts                                                                                      |
 | scenario-roblox-vfx-audio                | particles, beams, ambience; send the mood sentence and the light positions                                                                                                    |

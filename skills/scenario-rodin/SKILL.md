@@ -14,7 +14,7 @@ parts. Discover them with `search` and treat `model_schema_get` as the contract:
 ideas and disagree on parameter names.
 
 Connection and the core loop: see the `scenario` skill in this repo; model-agnostic 3D work: the
-`scenario-3d` skill. If a sibling skill named here is missing from your available skills, load it
+`doestaxx-3d` skill. If a sibling skill named here is missing from your available skills, load it
 with `skill_get` (Scenario MCP) or ask the user to install it
 (https://github.com/scenario-labs/skills#install); unattended, proceed from tool schemas and flag
 the gap.
@@ -71,7 +71,7 @@ asset than a default generator run: `dry_run` it like any other member.
 5. Re-run with `wait=false`, then `jobs_wait` with the returned job id, re-called with
    `pending_job_ids` on timeout. Full-lane jobs take minutes; a timeout is not a failure and never
    justifies a second `model_run`.
-6. `asset_display` the mesh, then `asset_download` for engine import (details in the `scenario-3d`
+6. `asset_display` the mesh, then `asset_download` for engine import (details in the `doestaxx-3d`
    skill).
 
 ## Common mistakes

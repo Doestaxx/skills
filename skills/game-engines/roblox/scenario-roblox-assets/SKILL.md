@@ -62,7 +62,7 @@ traps).
   AccessoryType and the `AvatarPartScaleType` it will declare (Classic, ProportionsNormal,
   ProportionsSlender).
 - Budget class: hero prop, clutter, or accessory (4,000 triangles).
-- Source: GLB from scenario-3d (preferred), FBX (needs FBX Unit Scale), or OBJ (mesh only).
+- Source: GLB from doestaxx-3d (preferred), FBX (needs FBX Unit Scale), or OBJ (mesh only).
 - Rigged or skinned input goes to scenario-roblox-animation after import.
 - Defaults when unanswered: prop, bottom pivot, longest side from the concept's scale, texture side
   from `texture_side`, hat crown opening 1.35 studs, no scale type (Classic box).
@@ -168,11 +168,11 @@ Score the result with [critique.md](references/critique.md) before calling it do
 
 ## Handoffs
 
-- Receives from scenario-3d: GLB or FBX meshes with PBR maps (image-to-3D, remesh, retexture,
+- Receives from doestaxx-3d: GLB or FBX meshes with PBR maps (image-to-3D, remesh, retexture,
   rigging). Ask for a remesh run when decimation damages the silhouette.
 - Receives from scenario-textures: PBR sets for one mesh, which become SurfaceAppearance here.
   Tileable sets go to scenario-roblox-environment as MaterialVariants.
-- Receives from scenario-game-assets: the concept image that scenario-3d turns into a mesh (one
+- Receives from scenario-game-assets: the concept image that doestaxx-3d turns into a mesh (one
   centered subject, plain background, front view). Icons, sprites and UI art go to
   scenario-roblox-ui, decals to scenario-roblox-environment.
 - Delivers to scenario-roblox-environment: MeshParts at true size with a bottom pivot, a proposed

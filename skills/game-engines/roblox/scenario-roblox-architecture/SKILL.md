@@ -198,7 +198,7 @@ recorded results are in [`references/procedures.md`](references/procedures.md).
 
 ## Handoffs
 
-- **Receives from:** scenario-roblox-expert (brief, toolkit, place slot); scenario-3d and
+- **Receives from:** scenario-roblox-expert (brief, toolkit, place slot); doestaxx-3d and
   scenario-game-assets (models that arrive as tagged templates in ServerStorage).
 - **Delivers to:** scenario-roblox-networking (service layout, remote module slot),
   scenario-roblox-data (DataService boot slot, PlayerRemoving hooks), scenario-roblox-gameplay (hits

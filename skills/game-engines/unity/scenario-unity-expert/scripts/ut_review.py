@@ -7,7 +7,7 @@ AgentKit.AgentCapture writes. Offline tests: tests/code/unity-expert/test_offlin
 real captures: tests/code/unity-expert/test_live_toolkit.py (run 2026-09-24).
 
 Why: an agent's own look at a frame is not enough. Epic's lighting agent approved an all-white
-frame (scenario-unreal-expert sources); on this Mac the first frame a fresh Unity editor renders shows
+frame (doestaxx-unreal-expert sources); on this Mac the first frame a fresh Unity editor renders shows
 every material flat white (observed 2026-09-24, AgentCapture renders a warm-up frame). A pink
 (magenta) frame means a missing or unsupported shader, for example the Built-in Standard shader
 in a URP project.

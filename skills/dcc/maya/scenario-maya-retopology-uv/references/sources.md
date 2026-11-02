@@ -50,7 +50,7 @@ Credentials are as stated in the notes; "unverified" is kept where the note says
   improves on; `tests/grading/M2_grade.md`: the blind grade whose "missing from both" list drove
   revision 2.
 - Sister skill used for ideas only:
-  `../2026-09-24 Blender Expert Skills/skills/scenario-blender-retopology/SKILL.md` (map first as
+  `../2026-09-24 Blender Expert Skills/skills/doestaxx-blender-retopology/SKILL.md` (map first as
   data, loop budgets, auto-remesh only for static assets); no Blender specifics were carried over.
 
 ## Revision history

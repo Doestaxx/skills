@@ -164,8 +164,8 @@ Each stage is one `ut_world` call; engine calls, arguments and recorded results 
 
 ## Handoffs
 
-- **Receives** assets from scenario-3d, scenario-textures, scenario-skyboxes and
-  scenario-blender-expert; the character controller and camera rig from scenario-unity-gameplay and
+- **Receives** assets from doestaxx-3d, scenario-textures, doestaxx-skyboxes and
+  doestaxx-blender-expert; the character controller and camera rig from scenario-unity-gameplay and
   scenario-unity-animation (Cinemachine); input from scenario-unity-architecture.
 - **Delivers** to scenario-unity-rendering-lighting: scenes with static flags, UV2, the core as
   lighting owner, one APV Baking Set with the core and every chunk, baked (and occlusion) with all

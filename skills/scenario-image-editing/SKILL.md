@@ -84,7 +84,7 @@ upscale can also outrun `model_run`'s wait budget where the effects above never 
 still returns `status: "success"` inline, a larger one returns `status: "in_progress"` and a job id
 for `jobs_wait`, re-called with any returned `pending_job_ids` as `job_ids`. Purpose-built variants
 protect seams on tileable textures and continuity on 360 panoramas: see `scenario-textures` and
-`scenario-skyboxes`.
+`doestaxx-skyboxes`.
 
 ## Expanding a canvas is four different tools
 

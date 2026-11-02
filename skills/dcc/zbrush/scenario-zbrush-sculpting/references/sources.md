@@ -145,5 +145,5 @@ and `notes/fundamentals/_digest_fundamentals_logic_files.md`. Version facts:
 
 ## Sister skills used for shape
 
-- scenario-blender-sculpting (Blender Expert Skills project): the stance-and-gates layout and the
+- doestaxx-blender-sculpting (Blender Expert Skills project): the stance-and-gates layout and the
   "render, name one weakest link, fix, re-render" loop.

@@ -92,12 +92,40 @@ function render(source, read, skills) {
     return plugin;
   });
 
+  // Doestaxx Studio: one curated plugin holding every converted core skill
+  // (skills/doestaxx and skills/doestaxx-<topic>), listed first and unnumbered
+  // so it reads as the product in Claude chat and Claude Code. Expert families
+  // keep their own grouping plugins. The skills stay in their groupings too.
+  const studio = skills
+    .filter(
+      (skill) =>
+        /^skills\/doestaxx(-[a-z0-9-]+)?$/.test(skill.dir) &&
+        skill.name === skill.dir.slice("skills/".length),
+    )
+    .sort((a, b) =>
+      a.name === "doestaxx"
+        ? -1
+        : b.name === "doestaxx"
+          ? 1
+          : a.name.localeCompare(b.name),
+    );
+  if (studio.length > 0) {
+    plugins.unshift({
+      name: "doestaxx-studio",
+      description:
+        "Doestaxx Studio: 3D props and characters, 360 skies, explorable scenes, walk-in rooms, Blender, and ComfyUI pipelines, routed across Higgsfield, fal.ai, direct model APIs, and ComfyUI.",
+      source: "./",
+      strict: false,
+      skills: studio.map((skill) => `./${skill.dir}`),
+    });
+  }
+
   const manifest = {
-    name: "scenario-skills",
-    owner: { name: "Scenario", url: "https://scenario.com" },
+    name: "doestaxx-skills",
+    owner: { name: "Doestaxx", url: "https://github.com/Doestaxx/skills" },
     metadata: {
       description:
-        "Agent Skills for creating production-ready images, video, audio, 3D, and custom models with Scenario, plus expert tools for DCC software and game engines",
+        "Doestaxx Agent Skills for images, video, audio, and 3D across Higgsfield, fal.ai, direct model APIs, and ComfyUI, plus expert tools for DCC software and game engines",
     },
     plugins,
   };

@@ -89,12 +89,12 @@ windowed capture runs, an editor MCP server, and GUT or gdUnit4 tests.
 ## Install
 
 ```bash
-npx skills add scenario-labs/skills --skill scenario-godot-expert scenario-godot-2d scenario-godot-3d-world scenario-godot-animation scenario-godot-architecture scenario-godot-audio scenario-godot-gameplay scenario-godot-multiplayer scenario-godot-performance-export scenario-godot-pipeline-automation scenario-godot-rendering-lighting scenario-godot-shaders scenario-godot-ui scenario-godot-vfx
+npx skills add Doestaxx/skills --skill scenario-godot-expert scenario-godot-2d scenario-godot-3d-world scenario-godot-animation scenario-godot-architecture scenario-godot-audio scenario-godot-gameplay scenario-godot-multiplayer scenario-godot-performance-export scenario-godot-pipeline-automation scenario-godot-rendering-lighting scenario-godot-shaders scenario-godot-ui scenario-godot-vfx
 ```
 
 The installer puts the skills side by side, which the specialists need: they import the lead skill's
 `scripts/` (Python toolkit and GDScript AgentKit). In the installer picker
-(`npx skills add scenario-labs/skills`), the family is the "Expert tools: Godot" group. Update with
+(`npx skills add Doestaxx/skills`), the family is the "Expert tools: Godot" group. Update with
 `npx skills update`.
 
 ## Provenance

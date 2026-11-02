@@ -35,7 +35,7 @@ the gap.
    comes from a development player on the lowest target device.
 4. **Look AND check, and know the capture's lies.** Every frame goes through
    [`ut_review.image_checks`](scripts/ut_review.py) and a contact sheet you open. Epic's lighting
-   agent approved an all-white frame (scenario-unreal-expert sources); here batch captures showed
+   agent approved an all-white frame (doestaxx-unreal-expert sources); here batch captures showed
    first-frame white materials, culled 2D lights, bind poses, no Overlay UI and black metals
    (observed by the team): anything wrong only in an Editor capture is re-checked in a player first.
    Agent-built levels come out "90%" done, a shelf in front of a door (Code Monkey, ppFshgFOgXU

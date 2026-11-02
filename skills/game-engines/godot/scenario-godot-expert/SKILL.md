@@ -215,9 +215,9 @@ before GLB export), unreal-expert, unity-expert, maya-expert, zbrush-expert.
 | sprites, props, icons, tilesets, UI pieces | scenario-game-assets                                | scenario-godot-2d, scenario-godot-ui                              |
 | animation frames, sprite sheets, VFX loops | scenario-sprite-animation, scenario-sprite-pipeline | scenario-godot-2d (SpriteFrames), scenario-godot-vfx (flipbooks)  |
 | parallax planes                            | scenario-parallax-stage                             | scenario-godot-2d (Parallax2D)                                    |
-| GLB meshes                                 | scenario-3d                                         | scenario-godot-3d-world (import), scenario-godot-animation (rigs) |
+| GLB meshes                                 | doestaxx-3d                                         | scenario-godot-3d-world (import), scenario-godot-animation (rigs) |
 | PBR textures, tileable materials           | scenario-textures                                   | scenario-godot-rendering-lighting, scenario-godot-shaders         |
-| skyboxes, 360 panoramas                    | scenario-skyboxes                                   | scenario-godot-rendering-lighting (sky)                           |
+| skyboxes, 360 panoramas                    | doestaxx-skyboxes                                   | scenario-godot-rendering-lighting (sky)                           |
 | music, SFX, ambience, voice                | scenario-audio, scenario-elevenlabs                 | scenario-godot-audio                                              |
 
 Check the asset before import (scenario-quality-gate) and again after it, in a capture from the game
